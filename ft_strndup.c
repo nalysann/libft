@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 15:51:59 by nalysann          #+#    #+#             */
-/*   Updated: 2020/02/07 15:52:00 by nalysann         ###   ########.fr       */
+/*   Created: 2020/02/08 13:04:46 by nalysann          #+#    #+#             */
+/*   Updated: 2020/02/08 13:04:48 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(const char *s, int fd)
+char	*ft_strndup(const char *s1, size_t n)
 {
-	if (s == NULL)
-		return ;
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
-	return ;
+	size_t	len;
+	char	*copy;
+
+	len = ft_strnlen(s1, n);
+	if (!(copy = malloc(len + 1)))
+		return (NULL);
+	copy[len] = '\0';
+	return ((char *)ft_strncpy(copy, s1, len));
 }

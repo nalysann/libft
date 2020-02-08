@@ -10,4 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
+char	*ft_strmap(const char *s, char (*f)(char))
+{
+	char	*str;
+	char	*save;
+
+	if (!(s != NULL && f != NULL && (str = ft_strnew(ft_strlen(s)))))
+		return (NULL);
+	save = str;
+	while (*s != '\0')
+		*str++ = (*f)(*s++);
+	return (save);
+}

@@ -1,22 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 15:51:59 by nalysann          #+#    #+#             */
-/*   Updated: 2020/02/07 15:52:00 by nalysann         ###   ########.fr       */
+/*   Created: 2020/02/08 13:36:59 by nalysann          #+#    #+#             */
+/*   Updated: 2020/02/08 13:37:02 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putendl_fd(const char *s, int fd)
+int		ft_abs(int i)
 {
-	if (s == NULL)
-		return ;
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
-	return ;
+	return ((i < 0) ? -i : i);
 }

@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strnlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 15:51:59 by nalysann          #+#    #+#             */
-/*   Updated: 2020/02/07 15:52:00 by nalysann         ###   ########.fr       */
+/*   Created: 2020/02/08 11:19:07 by nalysann          #+#    #+#             */
+/*   Updated: 2020/02/08 11:19:09 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(const char *s, int fd)
+size_t	ft_strnlen(const char *s, size_t maxlen)
 {
-	if (s == NULL)
-		return ;
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
-	return ;
+	const char	*save;
+
+	save = s;
+	while (maxlen-- && *s)
+		++s;
+	return (s - save);
 }

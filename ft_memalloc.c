@@ -10,4 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
+void	*ft_memalloc(size_t size)
+{
+	void	*area;
+
+	area = NULL;
+	if (size != 0 && (area = malloc(size)))
+		ft_bzero(area, size);
+	return (area);
+}

@@ -10,4 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
+char	*ft_strnew(size_t size)
+{
+	if (size == SIZE_MAX)
+		return (NULL);
+	return ((char *)ft_memalloc(size + 1));
+}
