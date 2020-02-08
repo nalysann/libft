@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int     ft_ispunct(int c)
+int		ft_ispunct(int c)
 {
-    return (ft_isgraph(c) && !ft_isalnum(c));
+	return (ft_isgraph(c) && !ft_isalnum(c));
 }

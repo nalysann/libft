@@ -12,7 +12,7 @@
 
 NAME = libft.a
 
-SRCS = ft_memset.c \
+SRC = ft_memset.c \
 	   ft_bzero.c \
 	   ft_memcpy.c \
 	   ft_memccpy.c \
@@ -20,6 +20,7 @@ SRCS = ft_memset.c \
 	   ft_memchr.c \
 	   ft_memcmp.c \
 	   ft_strlen.c \
+	   ft_strnlen.c \
 	   ft_strdup.c \
 	   ft_strcpy.c \
 	   ft_strncpy.c \
@@ -48,3 +49,32 @@ SRCS = ft_memset.c \
 	   ft_isxdigit.c \
 	   ft_toupper.c \
 	   ft_tolower.c
+
+OBJ = $(SRC:.c=.o)
+
+INC_DIR = .
+
+INC = $(INC_DIR)/libft.h
+
+CC = gcc
+
+CFLAGS = -c $(addprefix -I, $(INC_DIR)) -Wall -Wextra -Werror
+
+.PHONY: all clean fclean re
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
+
+%.o: %.c $(INC)
+	@$(CC) $(CFLAGS) $< -o $@
+
+clean:
+	@/bin/rm -f $(OBJ)
+
+fclean: clean
+	@/bin/rm -f $(NAME)
+
+re: fclean all

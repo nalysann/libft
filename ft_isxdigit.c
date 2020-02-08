@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int     ft_isxdigit(int c)
+int		ft_isxdigit(int c)
 {
-    return (ft_isdigit(c) || ('A' <= c && c <= 'F') || ('a' <= c && c <= 'f'));
+	return (ft_isdigit(c) || ('A' <= c && c <= 'F') || ('a' <= c && c <= 'f'));
 }

@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dst, const char *src)
+char		*ft_strcpy(char *dst, const char *src)
 {
-    char	*ret;
+	char	*ret;
 
-    ret = dst;
-    while ((*dst++ = *src++))
-        ;
-    return (ret);
+	ret = dst;
+	while ((*dst++ = *src++))
+		;
+	return (ret);
 }
