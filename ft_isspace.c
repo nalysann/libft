@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 15:45:53 by nalysann          #+#    #+#             */
-/*   Updated: 2020/02/07 15:45:54 by nalysann         ###   ########.fr       */
+/*   Created: 2020/02/08 10:59:00 by nalysann          #+#    #+#             */
+/*   Updated: 2020/02/08 10:59:02 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int     ft_isalpha(int c)
+int     ft_isspace(int c)
 {
-    return (ft_islower(c) || ft_isupper(c));
+    return (('\t' <= c && c <= '\r') || c == ' ');
 }

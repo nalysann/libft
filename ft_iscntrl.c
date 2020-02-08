@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_iscntrl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 15:45:53 by nalysann          #+#    #+#             */
-/*   Updated: 2020/02/07 15:45:54 by nalysann         ###   ########.fr       */
+/*   Created: 2020/02/08 11:00:04 by nalysann          #+#    #+#             */
+/*   Updated: 2020/02/08 11:00:06 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int     ft_isalpha(int c)
+int     ft_iscntrl(int c)
 {
-    return (ft_islower(c) || ft_isupper(c));
+    return ((0 <= c && c <= 037) || c == 0177);
 }
