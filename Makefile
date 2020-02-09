@@ -6,7 +6,7 @@
 #    By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/07 15:23:44 by nalysann          #+#    #+#              #
-#    Updated: 2020/02/07 15:23:46 by nalysann         ###   ########.fr        #
+#    Updated: 2020/02/09 10:29:04 by nalysann         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,10 @@ SRC = ft_memset.c \
 	   ft_lstdel.c \
 	   ft_lstadd.c \
 	   ft_lstiter.c \
-	   ft_lstmap.c
+	   ft_lstmap.c \
+	   ft_lstfind.c \
+	   ft_lstdelnode.c \
+	   get_next_line.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -97,16 +100,17 @@ CFLAGS = -c -O2 $(addprefix -I, $(INC_DIR)) -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
+	@echo "libft.a successfuly created."
 
 %.o: %.c $(INC)
-	$(CC) $(CFLAGS) $< -o $@
+	@$(CC) $(CFLAGS) $< -o $@
 
 clean:
-	/bin/rm -f $(OBJ)
+	@/bin/rm -f $(OBJ)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all

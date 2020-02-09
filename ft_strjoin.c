@@ -18,9 +18,11 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	size_t	len1;
 	size_t	len2;
 
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
-	if (s1 == NULL || s2 == NULL || !(str = ft_strnew(len1 + len2)))
+	if (len2 > SIZE_MAX - len1 - 1 || !(str = ft_strnew(len1 + len2)))
 		return (NULL);
 	ft_strcpy(str, s1);
 	ft_strcat(str, s2);
