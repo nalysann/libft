@@ -1,8 +1,11 @@
 .idea
 cmake-build-debug
-*.a
-*.o
 CMakeLists.txt
+*.a
+*.so
+*.o
+*.d
+obj
 *.dSYM
 *.out.*
 .DS_Store
