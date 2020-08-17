@@ -16,5 +16,5 @@
 
 long long	ft_atoll(const char *str)
 {
-	return (ft_strtoll(str, NULL, 10));
+	return (ft_strtoll(str, (char **)NULL, 10));
 }

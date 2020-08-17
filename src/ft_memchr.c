@@ -24,7 +24,8 @@ static void		*search_with_longwords(const unsigned char *char_ptr,
 	while (n >= sizeof(unsigned long))
 	{
 		longword = *long_ptr ^ mask;
-		if ((longword - 0x0101010101010101) & ~longword & 0x8080808080808080)
+		if (((longword - 0x0101010101010101) &
+			~longword & 0x8080808080808080) != 0)
 			break ;
 		++long_ptr;
 		n -= sizeof(unsigned long);
@@ -47,7 +48,7 @@ void			*ft_memchr(const void *s, int c, size_t n)
 
 	uc = (unsigned char)c;
 	char_ptr = (const unsigned char *)s;
-	while (n > 0 && ((size_t)char_ptr & (sizeof(unsigned long) - 1)))
+	while (n > 0 && (((size_t)char_ptr & (sizeof(unsigned long) - 1))) != 0)
 	{
 		if (*char_ptr == uc)
 			return ((void *)char_ptr);

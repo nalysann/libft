@@ -16,10 +16,10 @@
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	void *loc;
+	void	*loc;
 
 	loc = ft_memchr(src, c, n);
-	if (loc)
+	if (loc != NULL)
 		return (ft_mempcpy(dst, src, loc - src + 1));
 	ft_memcpy(dst, src, n);
 	return (NULL);

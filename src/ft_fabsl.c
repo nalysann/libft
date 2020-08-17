@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-long double	ft_fabsl(long double x)
+long double		ft_fabsl(long double x)
 {
 	return (x < 0 ? -x : x);
 }
