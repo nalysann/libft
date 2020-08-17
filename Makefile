@@ -130,9 +130,9 @@ SOFLAGS = -fPIC -shared
 
 OFLAGS = -march=native -O2 -pipe # -funroll-loops -ftree-vectorize
 
-RED := \e[31m
-GREEN := \e[32m
-NC := \e[0m
+WHITE = "\033[0;0m"
+RED = "\033[1;31m"
+BLUE = "\033[1;34m"
 
 .PHONY: all so clean fclean re
 
@@ -141,13 +141,13 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@ar rc $@ $?
 	@ranlib $(NAME)
-	@echo "$(GREEN)$(NAME) successfully created$(NC)"
+	@echo $(BLUE)$(NAME) successfully created$(NC)
 
 so: $(SHRD)
 
 $(SHRD): $(OBJ)
 	@$(CC) $(SOFLAGS) $? -o $@
-	@echo "$(GREEN)$(SHRD) successfully created$(NC)"
+	@echo $(BLUE)$(SHRD) successfully created $(NC)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
