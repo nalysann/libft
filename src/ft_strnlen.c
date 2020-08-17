@@ -12,66 +12,52 @@
 
 #include <stddef.h>
 
-static const char	*align_to_lword(const char **ptr, size_t *n)
+static int	count_with_longwords(const char *s, const char *char_ptr,
+								const char *end_ptr)
+{
+	const unsigned long		*long_ptr;
+	unsigned long			longword;
+	size_t					i;
+
+	long_ptr = (unsigned long *)char_ptr;
+	while (long_ptr < (unsigned long *)end_ptr)
+	{
+		longword = *long_ptr++;
+		if (((longword - 0x0101010101010101) & 0x8080808080808080))
+		{
+			char_ptr = (const char *)(long_ptr - 1);
+			i = -1;
+			while (++i < sizeof(unsigned long))
+				if (char_ptr[i] == '\0')
+					break ;
+			if (i < 8 && (char_ptr += i))
+				break;
+		}
+		char_ptr = end_ptr;
+	}
+	if (char_ptr > end_ptr)
+		char_ptr = end_ptr;
+	return (char_ptr - s);
+}
+
+size_t		ft_strnlen(const char *s, size_t maxlen)
 {
 	const char	*char_ptr;
+	const char	*end_ptr;
 
-	char_ptr = *ptr;
-	while (*n && ((size_t)char_ptr & (sizeof(unsigned long) - 1)))
+	if (maxlen == 0)
+		return (0);
+	char_ptr = (const char *)s;
+	end_ptr = s + maxlen;
+	while (((size_t)char_ptr & (sizeof(unsigned long) - 1)) != 0)
 	{
 		if (*char_ptr == '\0')
-			return (char_ptr);
+		{
+			if (char_ptr > end_ptr)
+				char_ptr = end_ptr;
+			return (char_ptr - s);
+		}
 		++char_ptr;
-		--*n;
 	}
-	*ptr = char_ptr;
-	return (NULL);
-}
-
-static const char	*check_zero(const unsigned long *lword)
-{
-	const char	*char_ptr;
-
-	char_ptr = (const char *)lword;
-	if (char_ptr[0] == '\0')
-		return (char_ptr);
-	if (char_ptr[1] == '\0')
-		return (char_ptr + 1);
-	if (char_ptr[2] == '\0')
-		return (char_ptr + 2);
-	if (char_ptr[3] == '\0')
-		return (char_ptr + 3);
-	if (char_ptr[4] == '\0')
-		return (char_ptr + 4);
-	if (char_ptr[5] == '\0')
-		return (char_ptr + 5);
-	if (char_ptr[6] == '\0')
-		return (char_ptr + 6);
-	if (char_ptr[7] == '\0')
-		return (char_ptr + 7);
-	return (NULL);
-}
-
-size_t				ft_strnlen(const char *s, size_t maxlen)
-{
-	const char			*s_char;
-	const unsigned long	*s_long;
-	const unsigned long	*end;
-	const char			*ret;
-
-	end = (const unsigned long *)(s + maxlen);
-	s_char = s;
-	if ((ret = align_to_lword(&s_char, &maxlen)))
-		return (ret - s);
-	s_long = (unsigned long *)s_char;
-	while (s_long < end)
-	{
-		if ((*s_long - 0x0101010101010101) & ~*s_long & 0x8080808080808080)
-			if ((ret = check_zero(s_long)))
-				break ;
-		++s_long;
-	}
-	if (!ret || ret > (const char *)end)
-		ret = (const char *)end;
-	return (ret - s);
+	return (count_with_longwords(s, char_ptr, end_ptr));
 }
