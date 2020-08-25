@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   hd_strtoll.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/13 18:30:40 by nalysann          #+#    #+#             */
-/*   Updated: 2020/07/13 18:30:43 by nalysann         ###   ########.fr       */
+/*   Created: 2020/07/13 18:29:26 by nalysann          #+#    #+#             */
+/*   Updated: 2020/07/13 18:29:27 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef HD_STRTOLL_H
+# define HD_STRTOLL_H
 
-# include "ft_ctype.h"
-# include "ft_error.h"
-# include "ft_list.h"
-# include "ft_math.h"
-# include "ft_stdio.h"
-# include "ft_stdlib.h"
-# include "ft_string.h"
+typedef struct	s_strtoll
+{
+	const char			*str;
+	int					base;
+	int					sign;
+	int					c;
+	int					any;
+	unsigned long long	res;
+}				t_strtoll;
 
 #endif

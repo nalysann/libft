@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   pf_handle_length.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/13 18:30:40 by nalysann          #+#    #+#             */
-/*   Updated: 2020/07/13 18:30:43 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/25 18:30:17 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/25 18:30:18 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef PF_HANDLE_LENGTH_H
+# define PF_HANDLE_LENGTH_H
 
-# include "ft_ctype.h"
-# include "ft_error.h"
-# include "ft_list.h"
-# include "ft_math.h"
-# include "ft_stdio.h"
-# include "ft_stdlib.h"
-# include "ft_string.h"
+# include <stdarg.h>
+
+long long			get_signed(va_list ap, int length);
+unsigned long long	get_unsigned(va_list ap, int length);
+long double			get_float(va_list ap, int length);
 
 #endif

@@ -41,29 +41,29 @@ SRC = ft_digittoint.c \
       ft_putstr_fd.c \
       get_next_line.c \
       ft_printf.c \
-      pft_bigint.c \
-      pft_buffer.c \
-      pft_handle_asterisk.c \
-      pft_handle_bigfloat.c\
-      pft_handle_bin.c \
-      pft_handle_char.c \
-      pft_handle_float.c \
-      pft_handle_hex_lower.c \
-      pft_handle_hex_upper.c \
-      pft_handle_invalid.c \
-      pft_handle_length.c \
-      pft_handle_oct.c \
-      pft_handle_percent.c \
-      pft_handle_placeholder.c \
-      pft_handle_pointer.c \
-      pft_handle_rounding.c \
-      pft_handle_signed.c \
-      pft_handle_string.c \
-      pft_handle_unsigned.c \
-      pft_print_placeholder.c \
-      pft_read_fields.c \
-      pft_utils_1.c \
-      pft_utils_2.c \
+      pf_bigint.c \
+      pf_buffer.c \
+      pf_handle_asterisk.c \
+      pf_handle_bigfloat.c\
+      pf_handle_bin.c \
+      pf_handle_char.c \
+      pf_handle_float.c \
+      pf_handle_hex_lower.c \
+      pf_handle_hex_upper.c \
+      pf_handle_invalid.c \
+      pf_handle_length.c \
+      pf_handle_oct.c \
+      pf_handle_percent.c \
+      pf_handle_placeholder.c \
+      pf_handle_pointer.c \
+      pf_handle_rounding.c \
+      pf_handle_signed.c \
+      pf_handle_string.c \
+      pf_handle_unsigned.c \
+      pf_print_placeholder.c \
+      pf_read_fields.c \
+      pf_utils_1.c \
+      pf_utils_2.c \
       ft_lstadd.c \
       ft_lstdel.c \
       ft_lstdelone.c \

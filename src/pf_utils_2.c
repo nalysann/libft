@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   pf_utils_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/13 18:30:40 by nalysann          #+#    #+#             */
-/*   Updated: 2020/07/13 18:30:43 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/25 18:46:41 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/25 18:46:44 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "pf_handle_float.h"
+#include "pf_utils.h"
 
-# include "ft_ctype.h"
-# include "ft_error.h"
-# include "ft_list.h"
-# include "ft_math.h"
-# include "ft_stdio.h"
-# include "ft_stdlib.h"
-# include "ft_string.h"
+#include <stddef.h>
 
-#endif
+void	ulltoa(unsigned long long value, t_string *string)
+{
+	size_t	length;
+	size_t	i;
+
+	length = get_length_unsigned(value, 10);
+	i = 0;
+	while (i < length)
+	{
+		string->str[string->len + length - 1 - i] = value % 10 + '0';
+		++i;
+		value /= 10;
+	}
+	string->len += length;
+}

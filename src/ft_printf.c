@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pft_buffer.h"
-#include "pft_handle_placeholder.h"
+#include "pf_buffer.h"
+#include "pf_handle_placeholder.h"
 
 #include <stdarg.h>
 #include <unistd.h>
