@@ -40,6 +40,30 @@ SRC = ft_digittoint.c \
       ft_putstr.c \
       ft_putstr_fd.c \
       get_next_line.c \
+      ft_printf.c \
+      pft_bigint.c \
+      pft_buffer.c \
+      pft_handle_asterisk.c \
+      pft_handle_bigfloat.c\
+      pft_handle_bin.c \
+      pft_handle_char.c \
+      pft_handle_float.c \
+      pft_handle_hex_lower.c \
+      pft_handle_hex_upper.c \
+      pft_handle_invalid.c \
+      pft_handle_length.c \
+      pft_handle_oct.c \
+      pft_handle_percent.c \
+      pft_handle_placeholder.c \
+      pft_handle_pointer.c \
+      pft_handle_rounding.c \
+      pft_handle_signed.c \
+      pft_handle_string.c \
+      pft_handle_unsigned.c \
+      pft_print_placeholder.c \
+      pft_read_fields.c \
+      pft_utils_1.c \
+      pft_utils_2.c \
       ft_lstadd.c \
       ft_lstdel.c \
       ft_lstdelone.c \
@@ -110,9 +134,10 @@ SRC = ft_digittoint.c \
       ft_strsplit.c \
       ft_strstr.c \
       ft_strsub.c \
-      ft_strtrim.c \
+      ft_strtrim.c
 
 INC_DIR = inc \
+          inc/ft_printf \
           inc/hidden
 
 OBJ_DIR = obj
@@ -124,13 +149,17 @@ DEP = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.d))
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror \
-         $(addprefix -I, $(INC_DIR)) \
+         $(addprefix -I , $(INC_DIR)) \
          -MMD \
          -march=native -O2 -pipe
 
+SHELL = /bin/zsh
+
 WHITE = "\033[0;0m"
 RED = "\033[1;31m"
-BLUE = "\033[1;34m"
+GREEN = "\033[1;32m"
+YELLOW = "\033[1;33m"
+BACK = "\033[A\033[M"
 
 .PHONY: all clean fclean re
 
@@ -138,22 +167,26 @@ all:
 	@$(MAKE) $(LIB)
 
 $(LIB): $(OBJ)
-	@ar rc $@ $?
-	@ranlib $(LIB)
-	@echo $(BLUE)$@ successfully created$(NC)
+	@ar -cr $@ $?
+	@ranlib $@
+	@echo -e $(BACK)$(GREEN)$@ created$(WHITE)
 
 $(OBJ_DIR):
 	@mkdir -p $@
+	@echo
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo -e $(YELLOW)compiling: $(@:$(OBJ_DIR)/%=%)$(BACK)$(WHITE)
 
 include $(wildcard $(DEP))
 
 clean:
 	@rm -rf $(OBJ_DIR)
+	@echo -e $(RED)object and dependency files deleted$(WHITE)
 
 fclean: clean
 	@rm -f $(LIB)
+	@echo -e $(RED)$(LIB) deleted$(WHITE)
 
 re: fclean all

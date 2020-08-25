@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   pft_handle_asterisk.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/13 18:16:53 by nalysann          #+#    #+#             */
-/*   Updated: 2020/07/13 18:16:54 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/25 18:29:36 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/25 18:29:37 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stdio.h"
+#ifndef PFT_HANDLE_ASTERISK_H
+# define PFT_HANDLE_ASTERISK_H
 
-#include <unistd.h>
+# include "pft_handle_placeholder.h"
 
-void	ft_putstr(const char *s)
-{
-	ft_putstr_fd(s, STDOUT_FILENO);
-}
+# include <stdarg.h>
+
+void	handle_asterisk(t_fields *fields, va_list ap);
+
+#endif

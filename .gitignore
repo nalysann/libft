@@ -12,7 +12,7 @@ obj
 *.out
 
 # valgrind
-*.dSYM
+*.dSYM/
 *.out.*
 
 # macOS

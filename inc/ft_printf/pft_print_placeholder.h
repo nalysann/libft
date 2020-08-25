@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   pft_print_placeholder.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/13 18:16:53 by nalysann          #+#    #+#             */
-/*   Updated: 2020/07/13 18:16:54 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/25 18:30:32 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/25 18:30:34 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stdio.h"
+#ifndef PFT_PRINT_PLACEHOLDER_H
+# define PFT_PRINT_PLACEHOLDER_H
 
-#include <unistd.h>
+# include "pft_buffer.h"
+# include "pft_handle_placeholder.h"
 
-void	ft_putstr(const char *s)
-{
-	ft_putstr_fd(s, STDOUT_FILENO);
-}
+# include <stdarg.h>
+
+int		print_placeholder(t_fields *fields, va_list ap, t_buffer *buf);
+
+#endif
