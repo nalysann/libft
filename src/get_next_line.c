@@ -17,25 +17,25 @@
 #include <stddef.h>
 #include <unistd.h>
 
-static char	*process_buffer(char **buffer, char *endl)
+static char		*process_buffer(char **buffer, char *endl)
 {
 	char	*str;
 	char	*tmp;
 
 	str = (endl ? ft_strndup(*buffer, endl - *buffer) : *buffer);
 	tmp = (endl ? *buffer : NULL);
-	*buffer = (endl ? ft_strdup(endl) : NULL);
+	*buffer = (endl ? ft_strdup(endl + 1) : NULL);
 	ft_strdel(&tmp);
 	return (str);
 }
 
-int			get_next_line(const int fd, char **line)
+int				get_next_line(const int fd, char **line)
 {
-	static char	*buffers[FD_MAX];
-	char		buf[BUF_SIZE + 1];
-	ssize_t		ret;
-	char		*endl;
-	char		*tmp;
+	static char		*buffers[FD_MAX];
+	char			buf[BUF_SIZE + 1];
+	ssize_t			ret;
+	char			*endl;
+	char			*tmp;
 
 	if (!buffers[fd])
 		buffers[fd] = ft_strnew(0);
@@ -50,5 +50,5 @@ int			get_next_line(const int fd, char **line)
 			break ;
 	}
 	*line = process_buffer(&buffers[fd], endl);
-	return ((ret < 0 || ((ret == 0) && !buffers[fd])) ? ret : 1);
+	return ((ret < 0 || ((ret == 0) && !buffers[fd])) ? (int)ret : 1);
 }
