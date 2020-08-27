@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urb-ilya@yandex.ru>              +#+  +:+       +#+        */
+/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/13 18:28:39 by nalysann          #+#    #+#             */
-/*   Updated: 2020/07/13 18:28:42 by nalysann         ###   ########.fr       */
+/*   Created: 2020/08/27 10:52:48 by nalysann          #+#    #+#             */
+/*   Updated: 2020/08/27 10:52:50 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,7 @@ int				get_next_line(const int fd, char **line)
 			break ;
 	}
 	*line = (*buffers[fd] != '\0' ? process_buffer(&buffers[fd], endl) : NULL);
+	if (*line == NULL)
+		ft_strdel(&buffers[fd]);
 	return (*line == NULL ? (int)ret : 1);
 }

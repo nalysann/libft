@@ -1,6 +1,6 @@
 # CLion
-.idea
-cmake-build-debug
+.idea/
+cmake-build-debug/
 CMakeLists.txt
 
 # object files, dependencies, libraries, binaries
