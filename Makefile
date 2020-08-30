@@ -146,7 +146,7 @@ OBJ := $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 DEP := $(addprefix $(OBJ_DIR)/, $(SRC:.c=.d))
 
-CC := gcc
+CC := clang
 
 CFLAGS += -Wall -Wextra -Werror \
           $(addprefix -I , $(INC_DIR)) \
