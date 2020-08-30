@@ -13,7 +13,6 @@ obj
 
 # valgrind
 *.dSYM/
-*.out.*
 
 # macOS
 .DS_Store
