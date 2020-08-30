@@ -15,9 +15,9 @@ int		ft_digittoint(int c)
 	if ('0' <= c && c <= '9')
 		return (c - '0');
 	else if ('a' <= c && c <= 'f')
-		return (c - 'a');
+		return (10 + c - 'a');
 	else if ('A' <= c && c <= 'F')
-		return (c - 'A');
+		return (10 + c - 'A');
 	else
-		return (-1);
+		return (0);
 }
