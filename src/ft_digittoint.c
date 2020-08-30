@@ -10,12 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ctype.h"
-
 int		ft_digittoint(int c)
 {
-	if (ft_isxdigit(c))
-		return (ft_isdigit(c) ? c - '0' : c - 'a');
+	if ('0' <= c && c <= '9')
+		return (c - '0');
+	else if ('a' <= c && c <= 'f')
+		return (c - 'a');
+	else if ('A' <= c && c <= 'F')
+		return (c - 'A');
 	else
-		return (0);
+		return (-1);
 }
