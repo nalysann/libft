@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdel.c                                        :+:      :+:    :+:   */
+/*   list_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 10:40:13 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/27 10:40:14 by nalysann         ###   ########.fr       */
+/*   Created: 2020/09/01 18:10:56 by nalysann          #+#    #+#             */
+/*   Updated: 2020/09/01 18:10:57 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 #include <stddef.h>
 
-void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
+void	list_init(t_list *list)
 {
-	t_list	*tmp;
-
-	while (*alst)
-	{
-		tmp = (*alst)->next;
-		ft_lstdelone(alst, del);
-		*alst = tmp;
-	}
+	list->front = NULL;
+	list->back = NULL;
+	list->size = 0;
+	list->free = list_free;
+	list->pop_back = list_pop_back;
+	list->pop_front = list_pop_front;
+	list->push_back = list_push_back;
+	list->push_front = list_push_front;
 }

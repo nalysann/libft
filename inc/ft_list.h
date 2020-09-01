@@ -15,18 +15,37 @@
 
 # include <stddef.h>
 
+# define LIST_ALLOC_MSG		"Memory allocation for list node failed"
+# define LIST_EMPTY_MSG		"Can't perform operation on an empty list"
+
+# define E_LIST_ALLOC		1
+# define E_LIST_EMPTY		2
+
+typedef struct	s_node
+{
+	void			*data;
+	struct s_node	*prev;
+	struct s_node	*next;
+}				t_node;
+
 typedef struct	s_list
 {
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
+	t_node	*back;
+	t_node	*front;
+	size_t	size;
+
+	void	(*free)(struct s_list *);
+	void	*(*pop_back)(struct s_list *);
+	void	*(*pop_front)(struct s_list *);
+	void	(*push_back)(struct s_list *, void *);
+	void	(*push_front)(struct s_list *, void *);
 }				t_list;
 
-void			ft_lstadd(t_list **alst, t_list *new);
-void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void			ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
-void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-t_list			*ft_lstnew(const void *content, size_t content_size);
+void			list_free(t_list *list);
+void			list_init(t_list *list);
+void			*list_pop_back(t_list *list);
+void			*list_pop_front(t_list *list);
+void			list_push_back(t_list *list, void *data_);
+void			list_push_front(t_list *list, void *data_);
 
 #endif

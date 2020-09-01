@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   list_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 10:41:28 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/27 10:41:29 by nalysann         ###   ########.fr       */
+/*   Created: 2020/09/01 18:52:31 by nalysann          #+#    #+#             */
+/*   Updated: 2020/09/01 18:52:34 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
+#include <stddef.h>
+#include <stdlib.h>
+
+void	list_free(t_list *list)
 {
-	while (lst)
+	t_node	*node;
+	t_node	*tmp;
+
+	node = list->front;
+	while (node != NULL)
 	{
-		f(lst);
-		lst = lst->next;
+		tmp = node;
+		free(node->data);
+		free(node);
+		node = node->next;
 	}
+	list->front = NULL;
+	list->back = NULL;
+	list->size = 0;
 }
