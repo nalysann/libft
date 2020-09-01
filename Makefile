@@ -146,14 +146,22 @@ OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 DEP = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.d))
 
-CC = clang
+UNAME_S = $(shell uname -s)
+
+ifeq ($(UNAME_S), Darwin)
+	CC = clang
+	SHELL = /bin/zsh
+endif
+
+ifeq ($(UNAME_S), Linux)
+	CC = gcc
+	SHELL = /bin/bash
+endif
 
 CFLAGS += -Wall -Wextra -Werror \
           $(addprefix -I , $(INC_DIR)) \
           -MD \
           -march=native -O2 -pipe
-
-SHELL = /bin/zsh
 
 RESET = "\033[0;0m"
 RED = "\033[0;31m"
