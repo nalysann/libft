@@ -134,7 +134,14 @@ SRC = ft_digittoint.c \
       ft_strsplit.c \
       ft_strstr.c \
       ft_strsub.c \
-      ft_strtrim.c
+      ft_strtrim.c \
+      vector_free.c \
+      vector_get.c \
+      vector_init.c \
+      vector_push_back.c \
+      vector_resize.c \
+      vector_set.c \
+      vector_size.c
 
 INC_DIR = inc \
           inc/ft_printf \

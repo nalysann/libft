@@ -42,6 +42,7 @@ add_library(ft STATIC
         inc/ft_stdio.h
         inc/ft_stdlib.h
         inc/ft_string.h
+        inc/ft_vector.h
         inc/libft.h
         src/ft_abs.c
         src/ft_atoi.c
@@ -163,4 +164,12 @@ add_library(ft STATIC
         src/pf_print_placeholder.c
         src/pf_read_fields.c
         src/pf_utils_1.c
-        src/pf_utils_2.c)
+        src/pf_utils_2.c
+        src/vector_free.c
+        src/vector_get.c
+        src/vector_init.c
+        src/vector_push_back.c
+        src/vector_resize.c
+        src/vector_set.c
+        src/vector_size.c
+        )
