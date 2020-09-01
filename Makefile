@@ -170,7 +170,7 @@ YELLOW = "\033[0;33m"
 BLUE = "\033[0;34m"
 MAGENTA = "\033[0;35m"
 CYAN = "\033[0;36m"
-GREY = "\033[0;37m"
+WHITE = "\033[0;37m"
 
 .PHONY: all clean fclean re
 
@@ -187,7 +187,7 @@ $(OBJ_DIR):
 	@mkdir -p $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	@echo -n $(GREY)
+	@echo -n $(MAGENTA)
 	$(CC) $(CFLAGS) -c $< -o $@
 	@echo -n $(RESET)
 
