@@ -31,6 +31,12 @@ SRC = ft_digittoint.c \
       ft_tolower.c \
       ft_toupper.c \
       ft_throw.c \
+      list_free.c \
+      list_init.c \
+      list_pop_back.c \
+      list_pop_front.c \
+      list_push_back.c \
+      list_push_front.c \
       ft_putchar.c \
       ft_putchar_fd.c \
       ft_putendl.c \
@@ -64,12 +70,6 @@ SRC = ft_digittoint.c \
       pf_read_fields.c \
       pf_utils_1.c \
       pf_utils_2.c \
-      ft_lstadd.c \
-      ft_lstdel.c \
-      ft_lstdelone.c \
-      ft_lstiter.c \
-      ft_lstmap.c \
-      ft_lstnew.c \
       ft_abs.c \
       ft_fabs.c \
       ft_fabsf.c \
@@ -140,8 +140,8 @@ SRC = ft_digittoint.c \
       vector_init.c \
       vector_push_back.c \
       vector_resize.c \
-      vector_set.c \
-      vector_size.c
+      vector_set.c
+
 
 INC_DIR = inc \
           inc/ft_printf \

@@ -17,23 +17,23 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-void	vector_resize(t_vector *v, size_t size)
+void	vector_resize(t_vector *v, size_t new_size)
 {
-	void	**data;
+	void	**data_;
 
-	if (size < v->capacity_)
+	if (new_size < v->capacity)
 	{
-		v->size_ = size;
+		v->size = new_size;
 	}
 	else
 	{
-		data = (void **)malloc(sizeof(void *) * size);
-		if (data == NULL)
+		data_ = (void **)malloc(sizeof(void *) * new_size);
+		if (data_ == NULL)
 			ft_throw(VECTOR_ALLOC_MSG, E_VECTOR_ALLOC);
-		ft_memmove(data, v->data_, sizeof(void *) * v->size_);
-		free(v->data_);
-		v->data_ = data;
-		v->size_ = size;
-		v->capacity_ = size;
+		ft_memmove(data_, v->data, sizeof(void *) * v->size);
+		free(v->data);
+		v->data = data_;
+		v->size = new_size;
+		v->capacity = new_size;
 	}
 }

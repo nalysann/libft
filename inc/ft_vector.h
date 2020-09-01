@@ -26,11 +26,10 @@
 
 typedef struct	s_vector
 {
-	void	**data_;
-	size_t	size_;
-	size_t	capacity_;
+	void	**data;
+	size_t	size;
+	size_t	capacity;
 
-	size_t	(*size)(struct s_vector *);
 	void	(*resize)(struct s_vector *, size_t);
 	void	(*push_back)(struct s_vector *, void *);
 	void	(*set)(struct s_vector *, size_t, void *);
@@ -40,9 +39,9 @@ typedef struct	s_vector
 
 void			vector_free(t_vector *v);
 void			*vector_get(t_vector *v, size_t idx);
+void			vector_init(t_vector *v);
 void			vector_push_back(t_vector *v, void *item);
-void 			vector_resize(t_vector *v, size_t size);
+void 			vector_resize(t_vector *v, size_t new_size);
 void			vector_set(t_vector *v, size_t idx, void *item);
-size_t			vector_size(t_vector *v);
 
 #endif

@@ -14,9 +14,9 @@
 
 void	vector_push_back(t_vector *v, void *item)
 {
-	if (v->size_ == v->capacity_)
+	if (v->size == v->capacity)
 	{
-		vector_resize(v, v->size_ * VECTOR_RESIZE_SCALE);
+		vector_resize(v, v->size * VECTOR_RESIZE_SCALE);
 	}
-	v->data_[v->size_++] = item;
+	v->data[v->size++] = item;
 }

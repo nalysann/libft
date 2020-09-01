@@ -79,12 +79,6 @@ add_library(ft STATIC
         src/ft_llmin.c
         src/ft_lmax.c
         src/ft_lmin.c
-        src/ft_lstadd.c
-        src/ft_lstdel.c
-        src/ft_lstdelone.c
-        src/ft_lstiter.c
-        src/ft_lstmap.c
-        src/ft_lstnew.c
         src/ft_max.c
         src/ft_memalloc.c
         src/ft_memccpy.c
@@ -142,6 +136,12 @@ add_library(ft STATIC
         src/ft_tolower.c
         src/ft_toupper.c
         src/get_next_line.c
+        src/list_free.c
+        src/list_init.c
+        src/list_pop_back.c
+        src/list_pop_front.c
+        src/list_push_back.c
+        src/list_push_front.c
         src/pf_bigint.c
         src/pf_buffer.c
         src/pf_handle_asterisk.c
@@ -171,5 +171,4 @@ add_library(ft STATIC
         src/vector_push_back.c
         src/vector_resize.c
         src/vector_set.c
-        src/vector_size.c
         )

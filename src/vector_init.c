@@ -17,15 +17,14 @@
 
 void	vector_init(t_vector *v)
 {
-	v->capacity_ = VECTOR_INIT_CAPACITY;
-	v->size_ = 0;
-	v->data_ = (void **)malloc(sizeof(void *) * v->capacity_);
-	if (v->data_ == NULL)
+	v->capacity = VECTOR_INIT_CAPACITY;
+	v->size = 0;
+	v->data = (void **)malloc(sizeof(void *) * v->capacity);
+	if (v->data == NULL)
 		ft_throw(VECTOR_ALLOC_MSG, E_VECTOR_ALLOC);
 	v->free = vector_free;
 	v->get = vector_get;
 	v->push_back = vector_push_back;
 	v->resize = vector_resize;
 	v->set = vector_set;
-	v->size = vector_size;
 }

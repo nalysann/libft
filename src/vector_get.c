@@ -17,9 +17,9 @@
 
 void	*vector_get(t_vector *v, size_t idx)
 {
-	if (idx < v->size_)
+	if (idx < v->size)
 	{
-		return (v->data_[idx]);
+		return (v->data[idx]);
 	}
 	else
 	{

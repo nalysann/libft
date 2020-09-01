@@ -17,9 +17,9 @@
 
 void	vector_set(t_vector *v, size_t idx, void *item)
 {
-	if (idx < v->size_)
+	if (idx < v->size)
 	{
-		v->data_[idx] = item;
+		v->data[idx] = item;
 	}
 	else
 	{

@@ -20,5 +20,6 @@
 # include "ft_stdio.h"
 # include "ft_stdlib.h"
 # include "ft_string.h"
+# include "ft_vector.h"
 
 #endif
