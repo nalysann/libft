@@ -16,7 +16,7 @@
 # include <stddef.h>
 
 # define LIST_ALLOC_MSG		"Memory allocation for list node failed"
-# define LIST_EMPTY_MSG		"Can't perform operation on an empty list"
+# define LIST_EMPTY_MSG		"Can't perform the operation on an empty list"
 
 # define E_LIST_ALLOC		1
 # define E_LIST_EMPTY		2

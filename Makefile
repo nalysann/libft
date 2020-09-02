@@ -138,6 +138,7 @@ SRC = ft_digittoint.c \
       vector_free.c \
       vector_get.c \
       vector_init.c \
+      vector_pop_back.c \
       vector_push_back.c \
       vector_resize.c \
       vector_set.c

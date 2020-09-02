@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_init.c                                      :+:      :+:    :+:   */
+/*   vector_pop_back.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/01 16:27:45 by nalysann          #+#    #+#             */
-/*   Updated: 2020/09/01 16:27:46 by nalysann         ###   ########.fr       */
+/*   Created: 2020/09/02 11:31:30 by nalysann          #+#    #+#             */
+/*   Updated: 2020/09/02 11:31:31 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_error.h"
 #include "ft_vector.h"
 
-#include <stdlib.h>
-
-void	vector_init(t_vector *v)
+void	*vector_pop_back(t_vector *v)
 {
-	v->capacity = VECTOR_INIT_CAPACITY;
-	v->size = 0;
-	v->data = (void **)malloc(sizeof(void *) * v->capacity);
-	if (v->data == NULL)
-		ft_throw(VECTOR_ALLOC_MSG, E_VECTOR_ALLOC);
-	v->free = vector_free;
-	v->get = vector_get;
-	v->pop_back = vector_pop_back;
-	v->push_back = vector_push_back;
-	v->resize = vector_resize;
-	v->set = vector_set;
+	if (v->size == 0)
+	{
+		ft_throw(VECTOR_EMPTY_MSG, E_VECTOR_EMPTY);
+	}
+	return (v->data[v->size-- - 1]);
 }

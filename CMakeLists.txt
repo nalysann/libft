@@ -168,6 +168,7 @@ add_library(ft STATIC
         src/vector_free.c
         src/vector_get.c
         src/vector_init.c
+        src/vector_pop_back.c
         src/vector_push_back.c
         src/vector_resize.c
         src/vector_set.c
