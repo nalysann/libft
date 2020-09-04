@@ -38,7 +38,7 @@ void			*vector_get(t_vector *vector, size_t idx);
 void			vector_init(t_vector *vector);
 void			*vector_pop_back(t_vector *vector);
 void			vector_push_back(t_vector *vector, void *item);
-void 			vector_resize(t_vector *vector, size_t new_size);
+void			vector_resize(t_vector *vector, size_t new_size);
 void			vector_set(t_vector *vector, size_t idx, void *item);
 
 #endif

@@ -16,14 +16,14 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-void	list_push_back(t_list *list, void *data_)
+void	list_push_back(t_list *list, void *item)
 {
 	t_node	*node;
 
 	node = (t_node *)malloc(sizeof(t_node));
 	if (node == NULL)
 		ft_throw(LIST_ALLOC_MSG, E_LIST_ALLOC);
-	node->data = data_;
+	node->data = item;
 	node->prev = list->back;
 	node->next = NULL;
 	if (list->back != NULL)

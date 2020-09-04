@@ -33,19 +33,13 @@ typedef struct	s_list
 	t_node	*back;
 	t_node	*front;
 	size_t	size;
-
-	void	(*free)(struct s_list *);
-	void	*(*pop_back)(struct s_list *);
-	void	*(*pop_front)(struct s_list *);
-	void	(*push_back)(struct s_list *, void *);
-	void	(*push_front)(struct s_list *, void *);
 }				t_list;
 
 void			list_free(t_list *list);
 void			list_init(t_list *list);
 void			*list_pop_back(t_list *list);
 void			*list_pop_front(t_list *list);
-void			list_push_back(t_list *list, void *data_);
-void			list_push_front(t_list *list, void *data_);
+void			list_push_back(t_list *list, void *item);
+void			list_push_front(t_list *list, void *item);
 
 #endif

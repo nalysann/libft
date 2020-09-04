@@ -19,9 +19,4 @@ void	list_init(t_list *list)
 	list->front = NULL;
 	list->back = NULL;
 	list->size = 0;
-	list->free = list_free;
-	list->pop_back = list_pop_back;
-	list->pop_front = list_pop_front;
-	list->push_back = list_push_back;
-	list->push_front = list_push_front;
 }
