@@ -15,11 +15,11 @@
 
 #include <stddef.h>
 
-void	vector_set(t_vector *v, size_t idx, void *item)
+void	vector_set(t_vector *vector, size_t idx, void *item)
 {
-	if (idx < v->size)
+	if (idx < vector->size)
 	{
-		v->data[idx] = item;
+		vector->data[idx] = item;
 	}
 	else
 	{

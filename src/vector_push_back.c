@@ -12,11 +12,11 @@
 
 #include "ft_vector.h"
 
-void	vector_push_back(t_vector *v, void *item)
+void	vector_push_back(t_vector *vector, void *item)
 {
-	if (v->size == v->capacity)
+	if (vector->size == vector->capacity)
 	{
-		vector_resize(v, v->size * VECTOR_RESIZE_SCALE);
+		vector_resize(vector, vector->size * VECTOR_RESIZE_SCALE);
 	}
-	v->data[v->size++] = item;
+	vector->data[vector->size++] = item;
 }

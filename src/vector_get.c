@@ -15,11 +15,11 @@
 
 #include <stddef.h>
 
-void	*vector_get(t_vector *v, size_t idx)
+void	*vector_get(t_vector *vector, size_t idx)
 {
-	if (idx < v->size)
+	if (idx < vector->size)
 	{
-		return (v->data[idx]);
+		return (vector->data[idx]);
 	}
 	else
 	{

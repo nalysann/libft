@@ -15,17 +15,11 @@
 
 #include <stdlib.h>
 
-void	vector_init(t_vector *v)
+void	vector_init(t_vector *vector)
 {
-	v->capacity = VECTOR_INIT_CAPACITY;
-	v->size = 0;
-	v->data = (void **)malloc(sizeof(void *) * v->capacity);
-	if (v->data == NULL)
+	vector->capacity = VECTOR_INIT_CAPACITY;
+	vector->size = 0;
+	vector->data = (void **)malloc(sizeof(void *) * vector->capacity);
+	if (vector->data == NULL)
 		ft_throw(VECTOR_ALLOC_MSG, E_VECTOR_ALLOC);
-	v->free = vector_free;
-	v->get = vector_get;
-	v->pop_back = vector_pop_back;
-	v->push_back = vector_push_back;
-	v->resize = vector_resize;
-	v->set = vector_set;
 }

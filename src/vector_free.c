@@ -15,10 +15,10 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-void	vector_free(t_vector *v)
+void	vector_free(t_vector *vector)
 {
-	free(v->data);
-	v->data = NULL;
-	v->size = 0;
-	v->capacity = 0;
+	free(vector->data);
+	vector->data = NULL;
+	vector->size = 0;
+	vector->capacity = 0;
 }

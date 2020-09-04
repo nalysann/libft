@@ -13,11 +13,11 @@
 #include "ft_error.h"
 #include "ft_vector.h"
 
-void	*vector_pop_back(t_vector *v)
+void	*vector_pop_back(t_vector *vector)
 {
-	if (v->size == 0)
+	if (vector->size == 0)
 	{
 		ft_throw(VECTOR_EMPTY_MSG, E_VECTOR_EMPTY);
 	}
-	return (v->data[v->size-- - 1]);
+	return (vector->data[vector->size-- - 1]);
 }
