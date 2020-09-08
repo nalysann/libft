@@ -16,7 +16,7 @@
 # include <stddef.h>
 
 # define VECTOR_INIT_CAPACITY	8
-# define VECTOR_RESIZE_SCALE	2
+# define VECTOR_GROWTH_SCALE	2
 
 # define VECTOR_ALLOC_MSG	"Memory allocation for vector data failed"
 # define VECTOR_INDEX_MSG	"Vector index out of bounds"
