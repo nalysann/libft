@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   free_split.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/10 15:42:45 by nalysann          #+#    #+#             */
-/*   Updated: 2020/09/10 16:48:43 by nalysann         ###   ########.fr       */
+/*   Created: 2020/09/10 16:42:13 by nalysann          #+#    #+#             */
+/*   Updated: 2020/09/10 16:42:14 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
+#include <stdlib.h>
 
-void	ft_swap(void *a, void *b, size_t size)
+void	free_split(char **split, size_t idx)
 {
-	unsigned char	*ua;
-	unsigned char	*ub;
-	unsigned char	tmp;
-
-	if (size == 0)
-		return ;
-	ua = (unsigned char *)a;
-	ub = (unsigned char *)b;
-	while (size-- > 0)
+	while (split[idx] != NULL)
 	{
-		tmp = *ua;
-		*ua++ = *ub;
-		*ub++ = tmp;
+		free(split[idx++]);
 	}
+	free(split);
 }

@@ -6,7 +6,7 @@
 #    By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/27 10:26:30 by nalysann          #+#    #+#              #
-#    Updated: 2020/09/10 16:27:08 by nalysann         ###   ########.fr        #
+#    Updated: 2020/09/10 16:38:36 by nalysann         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,7 @@ SRC = ft_digittoint.c \
       ft_lmin.c \
       ft_max.c \
       ft_min.c \
+      free_split.c \
       ft_atoi.c \
       ft_atol.c \
       ft_atoll.c \

@@ -44,6 +44,7 @@ add_library(ft STATIC
         inc/ft_string.h
         inc/ft_vector.h
         inc/libft.h
+        src/free_split.c
         src/ft_abs.c
         src/ft_atoi.c
         src/ft_atol.c

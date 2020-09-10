@@ -6,7 +6,7 @@
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 10:30:55 by nalysann          #+#    #+#             */
-/*   Updated: 2020/09/10 16:27:08 by nalysann         ###   ########.fr       */
+/*   Updated: 2020/09/10 16:38:17 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stddef.h>
 
+void		free_split(char **split, size_t idx);
 int			ft_atoi(const char *str);
 long		ft_atol(const char *str);
 long long	ft_atoll(const char *str);
