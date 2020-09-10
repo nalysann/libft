@@ -36,6 +36,7 @@ typedef struct	s_list
 }				t_list;
 
 void			list_free(t_list *list);
+void			list_free_deep(t_list *list, void (*f)(void *));
 void			list_init(t_list *list);
 void			*list_pop_back(t_list *list);
 void			*list_pop_front(t_list *list);

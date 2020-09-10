@@ -34,6 +34,7 @@ typedef struct	s_vector
 }				t_vector;
 
 void			vector_free(t_vector *vector);
+void			vector_free_deep(t_vector *vector, void (*f)(void *));
 void			*vector_get(t_vector *vector, size_t idx);
 void			vector_init(t_vector *vector);
 void			*vector_pop_back(t_vector *vector);
