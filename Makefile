@@ -6,7 +6,7 @@
 #    By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/27 10:26:30 by nalysann          #+#    #+#              #
-#    Updated: 2020/08/27 10:26:40 by nalysann         ###   ########.fr        #
+#    Updated: 2020/09/10 16:27:08 by nalysann         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,6 +98,7 @@ SRC = ft_digittoint.c \
       ft_strnew.c \
       ft_strtol.c \
       ft_strtoll.c \
+      ft_swap.c \
       ft_bzero.c \
       ft_memccpy.c \
       ft_memchr.c \
@@ -186,29 +187,29 @@ all:
 	@$(MAKE) $(LIB)
 
 $(LIB): $(OBJ)
-	@echo -n $(BLUE)
+	@echo -en $(BLUE)
 	ar -cr $@ $?
 	ranlib $@
-	@echo -n $(RESET)
+	@echo -en $(RESET)
 
 $(OBJ_DIR):
 	@mkdir -p $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	@echo -n $(MAGENTA)
+	@echo -en $(MAGENTA)
 	$(CC) $(CFLAGS) -c $< -o $@
-	@echo -n $(RESET)
+	@echo -en $(RESET)
 
 include $(wildcard $(DEP))
 
 clean:
-	@echo -n $(RED)
+	@echo -en $(RED)
 	rm -rf $(OBJ_DIR)
-	@echo -n $(RESET)
+	@echo -en $(RESET)
 
 fclean: clean
-	@echo -n $(RED)
+	@echo -en $(RED)
 	rm -f $(LIB)
-	@echo -n $(RESET)
+	@echo -en $(RESET)
 
 re: fclean all

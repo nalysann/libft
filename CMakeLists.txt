@@ -132,6 +132,7 @@ add_library(ft STATIC
         src/ft_strtol.c
         src/ft_strtoll.c
         src/ft_strtrim.c
+        src/ft_swap.c
         src/ft_throw.c
         src/ft_tolower.c
         src/ft_toupper.c
@@ -171,5 +172,4 @@ add_library(ft STATIC
         src/vector_pop_back.c
         src/vector_push_back.c
         src/vector_resize.c
-        src/vector_set.c
-        )
+        src/vector_set.c)
