@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   complex_abs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 10:31:14 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/27 10:31:16 by nalysann         ###   ########.fr       */
+/*   Created: 2020/09/13 17:09:48 by nalysann          #+#    #+#             */
+/*   Updated: 2020/09/13 17:10:34 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "ft_complex.h"
 
-# include "ft_complex.h"
-# include "ft_ctype.h"
-# include "ft_error.h"
-# include "ft_list.h"
-# include "ft_math.h"
-# include "ft_stdio.h"
-# include "ft_stdlib.h"
-# include "ft_string.h"
-# include "ft_vector.h"
-
-#endif
+double			complex_abs2(const t_complex *this)
+{
+	return (this->re * this->re + this->im * this->im);
+}

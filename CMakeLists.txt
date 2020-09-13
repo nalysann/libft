@@ -35,6 +35,7 @@ add_library(ft STATIC
         inc/hidden/hd_get_next_line.h
         inc/hidden/hd_strtol.h
         inc/hidden/hd_strtoll.h
+        inc/ft_complex.h
         inc/ft_ctype.h
         inc/ft_error.h
         inc/ft_list.h
@@ -44,6 +45,11 @@ add_library(ft STATIC
         inc/ft_string.h
         inc/ft_vector.h
         inc/libft.h
+        src/complex_abs.c
+        src/complex_add.c
+        src/complex_div.c
+        src/complex_mul.c
+        src/complex_sub.c
         src/free_split.c
         src/ft_abs.c
         src/ft_atoi.c

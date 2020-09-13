@@ -14,7 +14,12 @@ LIB = libft.a
 
 SRC_DIR = src
 
-SRC = ft_digittoint.c \
+SRC = complex_abs.c \
+      complex_add.c \
+      complex_div.c \
+      complex_mul.c \
+      complex_sub.c \
+      ft_digittoint.c \
       ft_isalnum.c \
       ft_isalpha.c \
       ft_isascii.c \
@@ -160,12 +165,10 @@ UNAME_S = $(shell uname -s)
 
 ifeq ($(UNAME_S), Darwin)
 	CC = clang
-	SHELL = /bin/zsh
 endif
 
 ifeq ($(UNAME_S), Linux)
 	CC = gcc
-	SHELL = /bin/bash
 endif
 
 CFLAGS += -Wall -Wextra -Werror \
@@ -173,14 +176,14 @@ CFLAGS += -Wall -Wextra -Werror \
           -MD \
           -march=native -O2 -pipe
 
-RESET = "\033[0;0m"
-RED = "\033[0;31m"
-GREEN = "\033[0;32m"
-YELLOW = "\033[0;33m"
-BLUE = "\033[0;34m"
-MAGENTA = "\033[0;35m"
-CYAN = "\033[0;36m"
-WHITE = "\033[0;37m"
+RESET = \033[0;0m
+RED = \033[0;31m
+GREEN = \033[0;32m
+YELLOW = \033[0;33m
+BLUE = \033[0;34m
+MAGENTA = \033[0;35m
+CYAN = \033[0;36m
+WHITE = \033[0;37m
 
 .PHONY: all clean fclean re
 
@@ -188,29 +191,29 @@ all:
 	@$(MAKE) $(LIB)
 
 $(LIB): $(OBJ)
-	@echo -en $(BLUE)
+	@printf "$(BLUE)"
 	ar -cr $@ $?
 	ranlib $@
-	@echo -en $(RESET)
+	@printf "$(RESET)"
 
 $(OBJ_DIR):
 	@mkdir -p $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	@echo -en $(MAGENTA)
+	@printf "$(MAGENTA)"
 	$(CC) $(CFLAGS) -c $< -o $@
-	@echo -en $(RESET)
+	@printf "$(RESET)"
 
 include $(wildcard $(DEP))
 
 clean:
-	@echo -en $(RED)
+	@printf "$(RED)"
 	rm -rf $(OBJ_DIR)
-	@echo -en $(RESET)
+	@printf "$(RESET)"
 
 fclean: clean
-	@echo -en $(RED)
+	@printf "$(RED)"
 	rm -f $(LIB)
-	@echo -en $(RESET)
+	@printf "$(RESET)"
 
 re: fclean all
