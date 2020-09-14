@@ -152,9 +152,9 @@ SRC = complex_abs.c \
       vector_set.c
 
 
-INC_DIR = inc \
-          inc/ft_printf \
-          inc/hidden
+INC_DIR = include \
+          include/ft_printf \
+          include/hidden
 
 OBJ_DIR = obj
 

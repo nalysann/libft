@@ -16,35 +16,35 @@ project(libft C)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_FLAGS "-Wall -Wextra -Werror -O2 -march=native -pipe")
 
-include_directories(inc)
-include_directories(inc/ft_printf)
-include_directories(inc/hidden)
+include_directories(include)
+include_directories(include/ft_printf)
+include_directories(include/hidden)
 
 add_library(ft STATIC
-        inc/ft_printf/pf_bigint.h
-        inc/ft_printf/pf_buffer.h
-        inc/ft_printf/pf_handle_asterisk.h
-        inc/ft_printf/pf_handle_bigfloat.h
-        inc/ft_printf/pf_handle_float.h
-        inc/ft_printf/pf_handle_length.h
-        inc/ft_printf/pf_handle_placeholder.h
-        inc/ft_printf/pf_print_placeholder.h
-        inc/ft_printf/pf_read_fields.h
-        inc/ft_printf/pf_type_handlers.h
-        inc/ft_printf/pf_utils.h
-        inc/hidden/hd_get_next_line.h
-        inc/hidden/hd_strtol.h
-        inc/hidden/hd_strtoll.h
-        inc/ft_complex.h
-        inc/ft_ctype.h
-        inc/ft_error.h
-        inc/ft_list.h
-        inc/ft_math.h
-        inc/ft_stdio.h
-        inc/ft_stdlib.h
-        inc/ft_string.h
-        inc/ft_vector.h
-        inc/libft.h
+        include/ft_printf/pf_bigint.h
+        include/ft_printf/pf_buffer.h
+        include/ft_printf/pf_handle_asterisk.h
+        include/ft_printf/pf_handle_bigfloat.h
+        include/ft_printf/pf_handle_float.h
+        include/ft_printf/pf_handle_length.h
+        include/ft_printf/pf_handle_placeholder.h
+        include/ft_printf/pf_print_placeholder.h
+        include/ft_printf/pf_read_fields.h
+        include/ft_printf/pf_type_handlers.h
+        include/ft_printf/pf_utils.h
+        include/hidden/hd_get_next_line.h
+        include/hidden/hd_strtol.h
+        include/hidden/hd_strtoll.h
+        include/ft_complex.h
+        include/ft_ctype.h
+        include/ft_error.h
+        include/ft_list.h
+        include/ft_math.h
+        include/ft_stdio.h
+        include/ft_stdlib.h
+        include/ft_string.h
+        include/ft_vector.h
+        include/libft.h
         src/complex_abs.c
         src/complex_add.c
         src/complex_div.c
