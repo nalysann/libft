@@ -48,6 +48,7 @@ add_library(ft STATIC
         src/complex_abs.c
         src/complex_add.c
         src/complex_div.c
+        src/complex_init.c
         src/complex_mul.c
         src/complex_sub.c
         src/free_split.c

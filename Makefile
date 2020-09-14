@@ -17,6 +17,7 @@ SRC_DIR = src
 SRC = complex_abs.c \
       complex_add.c \
       complex_div.c \
+      complex_init.c \
       complex_mul.c \
       complex_sub.c \
       ft_digittoint.c \
