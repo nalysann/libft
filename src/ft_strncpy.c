@@ -20,6 +20,8 @@ char	*ft_strncpy(char *dst, const char *src, size_t n)
 
 	len = ft_strnlen(src, n);
 	if (len != n)
+	{
 		ft_bzero(dst + len, n - len);
+	}
 	return (ft_memcpy(dst, src, len));
 }

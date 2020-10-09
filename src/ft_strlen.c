@@ -30,7 +30,9 @@ static int	count_with_longwords(const char *s, const char *char_ptr)
 			while (i < sizeof(unsigned long))
 			{
 				if (char_ptr[i] == '\0')
+				{
 					return (char_ptr - s + i);
+				}
 				++i;
 			}
 		}
@@ -45,7 +47,9 @@ size_t		ft_strlen(const char *s)
 	while (((size_t)char_ptr & (sizeof(unsigned long) - 1)) != 0)
 	{
 		if (*char_ptr == '\0')
+		{
 			return (char_ptr - s);
+		}
 		++char_ptr;
 	}
 	return (count_with_longwords(s, char_ptr));

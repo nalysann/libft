@@ -20,7 +20,9 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 
 	loc = ft_memchr(src, c, n);
 	if (loc != NULL)
+	{
 		return (ft_mempcpy(dst, src, loc - src + 1));
+	}
 	ft_memcpy(dst, src, n);
 	return (NULL);
 }

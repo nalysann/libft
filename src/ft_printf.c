@@ -35,7 +35,9 @@ int		ft_vdprintf(int fd, const char *format, va_list ap)
 			ret += handle_placeholder(&format, ap, &buf);
 	}
 	if (FLUSH_POLICY == UPON_CALL)
+	{
 		flush_buffer(&buf, fd);
+	}
 	return (ret);
 }
 

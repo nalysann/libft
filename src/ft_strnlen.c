@@ -54,7 +54,9 @@ size_t			ft_strnlen(const char *s, size_t maxlen)
 		if (*char_ptr == '\0')
 		{
 			if (char_ptr > end_ptr)
+			{
 				char_ptr = end_ptr;
+			}
 			return (char_ptr - s);
 		}
 		++char_ptr;

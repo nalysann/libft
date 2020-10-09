@@ -20,7 +20,15 @@ void	*ft_memalloc(size_t size)
 	void	*area;
 
 	area = NULL;
-	if (size && (area = malloc(size)))
-		ft_bzero(area, size);
+	if (size == 0)
+	{
+		return (NULL);
+	}
+	area = malloc(size);
+	if (area == NULL)
+	{
+		return (NULL);
+	}
+	ft_bzero(area, size);
 	return (area);
 }

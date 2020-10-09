@@ -26,10 +26,14 @@ char	*ft_strtrim(const char *s)
 		--end;
 		while ((s[beg] == ' ' || s[beg] == '\t' || s[beg] == '\n') &&
 				beg <= end)
+		{
 			++beg;
+		}
 		while ((s[end] == ' ' || s[end] == '\t' || s[end] == '\n') &&
 				beg <= end)
+		{
 			--end;
+		}
 	}
 	return (ft_strsub(s, beg, end - beg + 1));
 }

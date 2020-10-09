@@ -15,8 +15,8 @@
 static void	align_to_lword(unsigned char **dst, const unsigned char **src,
 							size_t *n)
 {
-	unsigned char		*dst_;
-	const unsigned char	*src_;
+	unsigned char			*dst_;
+	const unsigned char		*src_;
 
 	dst_ = *dst;
 	src_ = *src;

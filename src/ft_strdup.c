@@ -21,7 +21,10 @@ char	*ft_strdup(const char *s)
 	void	*new;
 
 	len = ft_strlen(s) + 1;
-	if (!(new = malloc(len)))
+	new = malloc(len);
+	if (new == NULL)
+	{
 		return (NULL);
-	return (ft_memcpy(new, s, len));
+	}
+	return ((char *)ft_memcpy(new, s, len));
 }

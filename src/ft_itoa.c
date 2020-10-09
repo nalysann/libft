@@ -36,9 +36,11 @@ char			*ft_itoa(int n)
 
 	sign = (n < 0 ? 1 : 0);
 	len = get_length(n);
-	str = malloc(len + 1);
+	str = (char *)malloc(len + 1);
 	if (str == NULL)
+	{
 		return (NULL);
+	}
 	str[len] = '\0';
 	while (len > sign)
 	{
@@ -46,6 +48,8 @@ char			*ft_itoa(int n)
 		n /= 10;
 	}
 	if (sign != 0)
+	{
 		str[--len] = '-';
+	}
 	return (str);
 }

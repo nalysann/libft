@@ -23,8 +23,16 @@ static char		*process_buffer(char **buffer, char *endl)
 	char	*tmp;
 
 	str = (endl == NULL ? *buffer : ft_strndup(*buffer, endl - *buffer));
+	if (endl != NULL && str == NULL)
+	{
+		return (NULL);
+	}
 	tmp = (endl == NULL ? NULL : *buffer);
 	*buffer = (endl == NULL ? NULL : ft_strdup(endl + 1));
+	if (endl != NULL && *buffer == NULL)
+	{
+		return (NULL);
+	}
 	ft_strdel(&tmp);
 	return (str);
 }
@@ -39,12 +47,15 @@ int				get_next_line(const int fd, char **line)
 
 	if (buffers[fd] == NULL)
 		buffers[fd] = ft_strnew(0);
+	if (buffers[fd] == NULL)
+		return (-1);
 	endl = ft_strchr(buffers[fd], '\n');
 	while (endl == NULL && (ret = read(fd, buf, BUF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
 		tmp = buffers[fd];
-		buffers[fd] = ft_strjoin(tmp, buf);
+		if (!(buffers[fd] = ft_strjoin(tmp, buf)))
+			return (-1);
 		ft_strdel(&tmp);
 		if (ft_strchr(buf, '\n') && (endl = ft_strchr(buffers[fd], '\n')))
 			break ;

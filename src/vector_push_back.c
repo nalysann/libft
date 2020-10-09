@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_error.h"
+#include "ft_stdio.h"
 #include "ft_string.h"
 #include "ft_vector.h"
 
@@ -26,7 +26,9 @@ void	vector_push_back(t_vector *vector, void *item)
 		new_capacity = vector->capacity * VECTOR_GROWTH_SCALE;
 		data_ = (void **)malloc(sizeof(void *) * new_capacity);
 		if (data_ == NULL)
-			ft_throw(VECTOR_ALLOC_MSG, E_VECTOR_ALLOC);
+		{
+			exit_with_error(VECTOR_ALLOC_MSG, E_VECTOR_ALLOC);
+		}
 		ft_memmove(data_, vector->data, sizeof(void *) * vector->capacity);
 		free(vector->data);
 		vector->data = data_;

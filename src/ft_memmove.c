@@ -17,8 +17,8 @@
 static void	align_to_lword(unsigned char **dst, const unsigned char **src,
 							size_t *n)
 {
-	unsigned char		*dst_;
-	const unsigned char	*src_;
+	unsigned char			*dst_;
+	const unsigned char		*src_;
 
 	dst_ = *dst;
 	src_ = *src;
@@ -33,10 +33,10 @@ static void	align_to_lword(unsigned char **dst, const unsigned char **src,
 
 void		*ft_memmove(void *dst, const void *src, size_t n)
 {
-	unsigned long		*dst_long;
-	const unsigned long	*src_long;
-	unsigned char		*dst_char;
-	const unsigned char	*src_char;
+	unsigned long			*dst_long;
+	const unsigned long		*src_long;
+	unsigned char			*dst_char;
+	const unsigned char		*src_char;
 
 	if (dst == src || (unsigned long)dst - (unsigned long)src >= n)
 		return (ft_memcpy(dst, src, n));

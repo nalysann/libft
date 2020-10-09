@@ -36,7 +36,6 @@ SRC = complex_abs.c \
       ft_isxdigit.c \
       ft_tolower.c \
       ft_toupper.c \
-      ft_throw.c \
       list_free.c \
       list_init.c \
       list_pop_back.c \
@@ -76,6 +75,7 @@ SRC = complex_abs.c \
       pf_read_fields.c \
       pf_utils_1.c \
       pf_utils_2.c \
+      exit_with_error.c \
       ft_abs.c \
       ft_fabs.c \
       ft_fabsf.c \

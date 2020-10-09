@@ -20,10 +20,14 @@
 static void	skip(t_strtoll *s)
 {
 	while (ft_isspace(s->c))
+	{
 		s->c = *(s->str)++;
+	}
 	s->sign = (s->c == '-' ? -1 : 1);
 	if (s->c == '+' || s->c == '-')
+	{
 		s->c = *(s->str)++;
+	}
 	if ((s->base == 0 || s->base == 16) && s->c == '0' &&
 		(*(s->str) == 'x' || *(s->str) == 'X'))
 	{
@@ -32,7 +36,9 @@ static void	skip(t_strtoll *s)
 		s->base = 16;
 	}
 	if (s->base == 0)
+	{
 		s->base = (s->c == '0' ? 8 : 10);
+	}
 }
 
 static void	convert_main(t_strtoll *s, unsigned long long cutoff, int cutlim)

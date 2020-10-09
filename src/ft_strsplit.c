@@ -21,15 +21,19 @@ static size_t	count_words(const char *s, char c)
 	size_t	words_count;
 
 	words_count = 0;
-	while (*s)
+	while (*s != '\0')
 	{
 		while (*s == c)
+		{
 			++s;
-		if (*s)
+		}
+		if (*s != '\0')
 		{
 			++words_count;
 			while (*s && *s != c)
+			{
 				++s;
+			}
 		}
 	}
 	return (words_count);
@@ -42,7 +46,7 @@ static char		*get_word(const char **str, char c)
 
 	beg = *str;
 	len = 0;
-	while (**str && **str != c)
+	while (**str != '\0' && **str != c)
 	{
 		++len;
 		++*str;
@@ -53,7 +57,9 @@ static char		*get_word(const char **str, char c)
 static void		free_text(char **text, size_t size)
 {
 	while (size--)
+	{
 		ft_memdel((void **)&text[size]);
+	}
 	ft_memdel((void **)&text);
 }
 
@@ -66,13 +72,13 @@ char			**ft_strsplit(const char *s, char c)
 
 	i = 0;
 	words_count = count_words(s, c);
-	if (!(text = malloc(sizeof(*text) * (words_count + 1))))
+	if (!(text = (char **)malloc(sizeof(*text) * (words_count + 1))))
 		return (NULL);
 	while (i < words_count)
 	{
 		while (*s == c)
 			++s;
-		if (*s)
+		if (*s != '\0')
 		{
 			if (!(word = get_word(&s, c)))
 			{

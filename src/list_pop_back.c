@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_error.h"
 #include "ft_list.h"
+#include "ft_stdio.h"
 
 #include <stddef.h>
 #include <stdlib.h>
@@ -22,15 +22,23 @@ void	*list_pop_back(t_list *list)
 	void	*data;
 
 	if (list->size == 0)
-		ft_throw(LIST_EMPTY_MSG, E_LIST_EMPTY);
+	{
+		exit_with_error(LIST_EMPTY_MSG, E_LIST_EMPTY);
+	}
 	if (list->front == list->back)
+	{
 		list->front = NULL;
+	}
 	else if (list->front->next == list->back)
+	{
 		list->front->next = NULL;
+	}
 	node = list->back;
 	list->back = node->prev;
 	if (list->back != NULL)
+	{
 		list->back->next = NULL;
+	}
 	--list->size;
 	data = node->data;
 	free(node);

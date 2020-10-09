@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_complex.h"
-#include "ft_error.h"
+#include "ft_stdio.h"
 
 #include <stddef.h>
 #include <stdlib.h>
@@ -38,7 +38,7 @@ t_complex	*complex_init_heap(double re, double im)
 	z = (t_complex *)malloc(sizeof(t_complex));
 	if (z == NULL)
 	{
-		ft_throw(COMPLEX_ALLOC_MSG, E_COMPLEX_ALLOC);
+		exit_with_error(COMPLEX_ALLOC_MSG, E_COMPLEX_ALLOC);
 	}
 	z->re = re;
 	z->im = im;

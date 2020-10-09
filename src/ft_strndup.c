@@ -20,10 +20,12 @@ char	*ft_strndup(const char *s, size_t n)
 	size_t	len;
 	char	*new;
 
-	len = ft_strnlen(s, n);
-	new = malloc(len + 1);
-	if (!(new = malloc(len + 1)))
+	len = ft_strnlen(s, n) + 1;
+	new = (char *)malloc(len);
+	if (new == NULL)
+	{
 		return (NULL);
+	}
 	new[len] = '\0';
-	return (ft_memcpy(new, s, len));
+	return ((char *)ft_memcpy(new, s, len));
 }

@@ -32,12 +32,12 @@ add_library(ft STATIC
         include/ft_printf/pf_read_fields.h
         include/ft_printf/pf_type_handlers.h
         include/ft_printf/pf_utils.h
+        include/hidden/hd_error.h
         include/hidden/hd_get_next_line.h
         include/hidden/hd_strtol.h
         include/hidden/hd_strtoll.h
         include/ft_complex.h
         include/ft_ctype.h
-        include/ft_error.h
         include/ft_list.h
         include/ft_math.h
         include/ft_stdio.h
@@ -51,6 +51,7 @@ add_library(ft STATIC
         src/complex_init.c
         src/complex_mul.c
         src/complex_sub.c
+        src/exit_with_error.c
         src/free_split.c
         src/ft_abs.c
         src/ft_atoi.c
@@ -141,7 +142,6 @@ add_library(ft STATIC
         src/ft_strtoll.c
         src/ft_strtrim.c
         src/ft_swap.c
-        src/ft_throw.c
         src/ft_tolower.c
         src/ft_toupper.c
         src/get_next_line.c

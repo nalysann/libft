@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.h                                         :+:      :+:    :+:   */
+/*   hd_error.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 10:30:11 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/27 10:30:13 by nalysann         ###   ########.fr       */
+/*   Created: 2020/10/09 10:40:44 by nalysann          #+#    #+#             */
+/*   Updated: 2020/10/09 10:40:45 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ERROR_H
-# define FT_ERROR_H
+#ifndef HD_ERROR_H
+# define HD_ERROR_H
 
-# ifndef WHITE
-#  define WHITE		"\033[0;0m"
+# ifndef RESET
+#  define RESET		"\033[0;0m"
 # endif
 
 # ifndef RED
 #  define RED		"\033[1;31m"
 # endif
-
-void	ft_throw(const char *error_message, int error_code);
 
 #endif

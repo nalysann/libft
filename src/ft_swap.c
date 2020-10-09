@@ -19,7 +19,9 @@ void	ft_swap(void *a, void *b, size_t size)
 	unsigned char	tmp;
 
 	if (size == 0)
+	{
 		return ;
+	}
 	ua = (unsigned char *)a;
 	ub = (unsigned char *)b;
 	while (size-- > 0)

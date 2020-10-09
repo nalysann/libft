@@ -14,10 +14,10 @@
 
 int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const unsigned long	*s1_long;
-	const unsigned long	*s2_long;
-	const unsigned char	*s1_char;
-	const unsigned char	*s2_char;
+	const unsigned long		*s1_long;
+	const unsigned long		*s2_long;
+	const unsigned char		*s1_char;
+	const unsigned char		*s2_char;
 
 	s1_long = (const unsigned long *)s1;
 	s2_long = (const unsigned long *)s2;

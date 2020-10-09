@@ -51,7 +51,9 @@ void			*ft_memchr(const void *s, int c, size_t n)
 	while (n > 0 && (((size_t)char_ptr & (sizeof(unsigned long) - 1))) != 0)
 	{
 		if (*char_ptr == uc)
+		{
 			return ((void *)char_ptr);
+		}
 		--n;
 		++char_ptr;
 	}

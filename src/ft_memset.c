@@ -44,6 +44,8 @@ void		*ft_memset(void *b, int c, size_t len)
 	}
 	char_ptr = (unsigned char *)long_ptr;
 	while (len--)
+	{
 		*char_ptr++ = uc;
+	}
 	return (b);
 }

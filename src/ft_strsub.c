@@ -20,8 +20,15 @@ char	*ft_strsub(const char *s, unsigned int start, size_t len)
 {
 	char	*substr;
 
-	if (len == SIZE_MAX || !(substr = malloc(len + 1)))
+	if (len == SIZE_MAX)
+	{
 		return (NULL);
+	}
+	substr = (char *)malloc(len + 1);
+	if (substr == NULL)
+	{
+		return (NULL);
+	}
 	substr[len] = '\0';
 	return (ft_strncpy(substr, s + start, len));
 }
