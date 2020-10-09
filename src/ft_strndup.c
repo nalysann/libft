@@ -20,8 +20,8 @@ char	*ft_strndup(const char *s, size_t n)
 	size_t	len;
 	char	*new;
 
-	len = ft_strnlen(s, n) + 1;
-	new = (char *)malloc(len);
+	len = ft_strnlen(s, n);
+	new = (char *)malloc(len + 1);
 	if (new == NULL)
 	{
 		return (NULL);
