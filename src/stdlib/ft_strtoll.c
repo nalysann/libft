@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ctype/ft_ctype.h"
-#include "hd_strtoll.h"
+#include "ft_ctype.h"
+#include "in_strtoll.h"
 
 #include <errno.h>
 #include <limits.h>

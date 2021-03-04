@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stdio.h"
 #include "ft_vector.h"
 
 #include <stddef.h>
@@ -18,11 +17,5 @@
 void	vector_set(t_vector *vector, size_t idx, void *item)
 {
 	if (idx < vector->size)
-	{
 		vector->data[idx] = item;
-	}
-	else
-	{
-		exit_with_error(VECTOR_INDEX_MSG, E_VECTOR_INDEX);
-	}
 }

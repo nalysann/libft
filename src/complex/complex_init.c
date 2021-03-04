@@ -11,18 +11,11 @@
 /* ************************************************************************** */
 
 #include "ft_complex.h"
-#include "ft_stdio.h"
 
 #include <stddef.h>
 #include <stdlib.h>
 
-void		complex_init(t_complex *this, double re, double im)
-{
-	this->re = re;
-	this->im = im;
-}
-
-t_complex	complex_init_stack(double re, double im)
+t_complex	complex_on_stack(double re, double im)
 {
 	t_complex	z;
 
@@ -31,16 +24,20 @@ t_complex	complex_init_stack(double re, double im)
 	return (z);
 }
 
-t_complex	*complex_init_heap(double re, double im)
+t_complex	*complex_on_heap(double re, double im)
 {
 	t_complex	*z;
 
 	z = (t_complex *)malloc(sizeof(t_complex));
 	if (z == NULL)
-	{
-		exit_with_error(COMPLEX_ALLOC_MSG, E_COMPLEX_ALLOC);
-	}
+		return (NULL);
 	z->re = re;
 	z->im = im;
 	return (z);
+}
+
+void		complex_set(t_complex *this, double re, double im)
+{
+	this->re = re;
+	this->im = im;
 }

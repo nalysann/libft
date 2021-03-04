@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_list.h"
-#include "ft_stdio.h"
 
 #include <stddef.h>
 #include <stdlib.h>
@@ -22,20 +21,14 @@ void	list_push_front(t_list *list, void *item)
 
 	node = (t_node *)malloc(sizeof(t_node));
 	if (node == NULL)
-	{
-		exit_with_error(LIST_ALLOC_MSG, E_LIST_ALLOC);
-	}
+		return ;
 	node->data = item;
 	node->prev = NULL;
 	node->next = list->front;
 	if (list->front != NULL)
-	{
 		list->front->prev = node;
-	}
 	list->front = node;
 	if (list->back == NULL)
-	{
 		list->back = node;
-	}
 	++list->size;
 }

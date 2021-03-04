@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stdio.h"
 #include "ft_string.h"
 #include "ft_vector.h"
 
@@ -22,15 +21,14 @@ void	vector_resize(t_vector *vector, size_t new_size)
 	void	**data_;
 
 	if (new_size < vector->capacity)
-	{
 		vector->size = new_size;
-	}
 	else
 	{
 		data_ = (void **)malloc(sizeof(void *) * new_size);
 		if (data_ == NULL)
 		{
-			exit_with_error(VECTOR_ALLOC_MSG, E_VECTOR_ALLOC);
+			vector->capacity = VECTOR_BAD_CAPACITY;
+			return;
 		}
 		ft_memmove(data_, vector->data, sizeof(void *) * vector->size);
 		free(vector->data);

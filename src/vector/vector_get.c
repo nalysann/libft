@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stdio.h"
 #include "ft_vector.h"
 
 #include <stddef.h>
@@ -18,12 +17,7 @@
 void	*vector_get(t_vector *vector, size_t idx)
 {
 	if (idx < vector->size)
-	{
 		return (vector->data[idx]);
-	}
 	else
-	{
-		exit_with_error(VECTOR_INDEX_MSG, E_VECTOR_INDEX);
-	}
-	return (NULL);
+		return (NULL);
 }

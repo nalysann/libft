@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "string/ft_string.h"
+#include "ft_string.h"
 
 void	ft_strclr(char *s)
 {

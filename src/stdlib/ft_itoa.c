@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "math/ft_math.h"
+#include "ft_stdlib.h"
 
 #include <stddef.h>
 #include <stdlib.h>

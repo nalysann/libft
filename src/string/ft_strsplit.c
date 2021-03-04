@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib/ft_stdlib.h"
-#include "string/ft_string.h"
+#include "ft_stdlib.h"
+#include "ft_string.h"
 
 #include <stddef.h>
 #include <stdlib.h>

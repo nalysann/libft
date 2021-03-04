@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ctype/ft_ctype.h"
+#include "ft_ctype.h"
 
 int		ft_strcasecmp(const char *s1, const char *s2)
 {

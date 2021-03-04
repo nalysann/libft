@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_with_error.c                                  :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/09 10:44:45 by nalysann          #+#    #+#             */
-/*   Updated: 2020/10/09 10:44:46 by nalysann         ###   ########.fr       */
+/*   Created: 2021/03/04 10:26:06 by nalysann          #+#    #+#             */
+/*   Updated: 2021/03/04 10:26:08 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_stdio.h"
-#include "hd_error.h"
+#include "in_error.h"
 
 #include <stddef.h>
 #include <stdlib.h>
 #include <unistd.h>
 
-void	exit_with_error(const char *error_message, int error_code)
+void	ft_error(const char *error_message, int error_code)
 {
 	if (error_message != NULL)
 	{

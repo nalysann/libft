@@ -10,14 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stdio.h"
 #include "ft_vector.h"
 
 void	*vector_pop_back(t_vector *vector)
 {
 	if (vector->size == 0)
-	{
-		exit_with_error(VECTOR_EMPTY_MSG, E_VECTOR_EMPTY);
-	}
+		return (NULL);
 	return (vector->data[vector->size-- - 1]);
 }

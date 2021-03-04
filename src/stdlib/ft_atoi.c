@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib/ft_stdlib.h"
+#include "ft_stdlib.h"
 
 #include <stddef.h>
 

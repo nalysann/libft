@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_ctype.h"
-#include "ft_math.h"
+#include "ft_stdlib.h"
 #include "ft_string.h"
 
 #include <stddef.h>

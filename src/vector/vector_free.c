@@ -29,10 +29,7 @@ void	vector_free_deep(t_vector *vector, void (*f)(void *))
 
 	i = 0;
 	while (i < vector->size)
-	{
-		f(vector->data[i]);
-		++i;
-	}
+		f(vector->data[i++]);
 	free(vector->data);
 	vector->data = NULL;
 	vector->size = 0;

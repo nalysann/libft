@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib/ft_stdlib.h"
-#include "string/ft_string.h"
-#include "hd_get_next_line.h"
+#include "ft_stdlib.h"
+#include "ft_string.h"
+#include "in_get_next_line.h"
 
 #include <stddef.h>
 #include <unistd.h>
