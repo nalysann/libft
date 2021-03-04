@@ -16,10 +16,13 @@
 # include <stddef.h>
 
 void		free_split(char **split, size_t idx);
+int			ft_abs(int i);
 int			ft_atoi(const char *str);
 long		ft_atol(const char *str);
 long long	ft_atoll(const char *str);
 char		*ft_itoa(int n);
+long		ft_labs(long i);
+long long	ft_llabs(long long i);
 void		*ft_memalloc(size_t size);
 void		ft_memdel(void **ap);
 void		ft_strdel(char **as);

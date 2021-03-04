@@ -2,7 +2,7 @@
 .idea/
 cmake-build-debug/
 
-# object files, dependencies, libraries, binaries
+# compilation artifacts
 obj
 *.o
 *.d
