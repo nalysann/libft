@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hd_get_next_line.h                                 :+:      :+:    :+:   */
+/*   in_get_next_line.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 10:29:41 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/27 10:29:42 by nalysann         ###   ########.fr       */
+/*   Created: 2021/03/04 14:42:37 by nalysann          #+#    #+#             */
+/*   Updated: 2021/03/04 14:42:44 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HD_GET_NEXT_LINE_H
-# define HD_GET_NEXT_LINE_H
+#ifndef IN_GET_NEXT_LINE_H
+# define IN_GET_NEXT_LINE_H
 
 # ifndef BUF_SIZE
 #  define BUF_SIZE	4096

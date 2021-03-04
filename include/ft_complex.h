@@ -13,19 +13,19 @@
 #ifndef FT_COMPLEX_H
 # define FT_COMPLEX_H
 
-# define COMPLEX_ALLOC_MSG	"Memory allocation for complex number failed"
-
-# define E_COMPLEX_ALLOC	1
-
 typedef struct	s_complex
 {
 	double	re;
 	double	im;
 }				t_complex;
 
-void			complex_init(t_complex *this, double re, double im);
-t_complex		complex_init_stack(double re, double im);
-t_complex		*complex_init_heap(double re, double im);
+/*
+** complex_on_heap returns NULL on memory allocation failure
+*/
+
+t_complex		complex_on_stack(double re, double im);
+t_complex		*complex_on_heap(double re, double im);
+void			complex_set(t_complex *this, double re, double im);
 
 double			complex_abs2(const t_complex *this);
 

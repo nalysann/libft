@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hd_error.h                                         :+:      :+:    :+:   */
+/*   in_strtol.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/09 10:40:44 by nalysann          #+#    #+#             */
-/*   Updated: 2020/10/09 10:40:45 by nalysann         ###   ########.fr       */
+/*   Created: 2021/03/04 14:42:52 by nalysann          #+#    #+#             */
+/*   Updated: 2021/03/04 14:42:53 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HD_ERROR_H
-# define HD_ERROR_H
+#ifndef IN_STRTOL_H
+# define IN_STRTOL_H
 
-# ifndef RESET
-#  define RESET		"\033[0;0m"
-# endif
-
-# ifndef RED
-#  define RED		"\033[1;31m"
-# endif
+typedef struct	s_strtol
+{
+	const char		*str;
+	int				base;
+	int				sign;
+	int				c;
+	int				any;
+	unsigned long	res;
+}				t_strtol;
 
 #endif

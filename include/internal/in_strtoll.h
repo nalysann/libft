@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hd_strtoll.h                                       :+:      :+:    :+:   */
+/*   in_strtoll.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 10:29:55 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/27 10:29:56 by nalysann         ###   ########.fr       */
+/*   Created: 2021/03/04 14:43:02 by nalysann          #+#    #+#             */
+/*   Updated: 2021/03/04 14:43:02 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HD_STRTOLL_H
-# define HD_STRTOLL_H
+#ifndef IN_STRTOLL_H
+# define IN_STRTOLL_H
 
 typedef struct	s_strtoll
 {

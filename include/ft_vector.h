@@ -16,15 +16,8 @@
 # include <stddef.h>
 
 # define VECTOR_INIT_CAPACITY	8
+# define VECTOR_BAD_CAPACITY	(size_t)-1
 # define VECTOR_GROWTH_SCALE	2
-
-# define VECTOR_ALLOC_MSG	"Memory allocation for vector data failed"
-# define VECTOR_INDEX_MSG	"Vector index out of bounds"
-# define VECTOR_EMPTY_MSG	"Can't perform the operation on an empty vector"
-
-# define E_VECTOR_ALLOC		1
-# define E_VECTOR_INDEX		2
-# define E_VECTOR_EMPTY		3
 
 typedef struct	s_vector
 {
@@ -33,10 +26,22 @@ typedef struct	s_vector
 	size_t	capacity;
 }				t_vector;
 
+/*
+** vector_get returns NULL for indices out of range
+** vector_on_heap returns NULL on memory allocation failure
+** vector_on_stack and vector_on_heap return vector with capacity
+**     set to VECTOR_BAD_CAPACITY on underlying array allocation failure
+** vector_pop_back returns NULL for empty vectors
+** vector_push_back and vector_resize set capacity to
+**     VECTOR_BAD_CAPACITY on resize failure
+** vector_set does nothing for indices out of range
+*/
+
 void			vector_free(t_vector *vector);
 void			vector_free_deep(t_vector *vector, void (*f)(void *));
 void			*vector_get(t_vector *vector, size_t idx);
-void			vector_init(t_vector *vector);
+t_vector		vector_on_stack(void);
+t_vector		*vector_on_heap(void);
 void			*vector_pop_back(t_vector *vector);
 void			vector_push_back(t_vector *vector, void *item);
 void			vector_resize(t_vector *vector, size_t new_size);
