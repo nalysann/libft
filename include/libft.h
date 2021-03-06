@@ -15,7 +15,6 @@
 
 # include "ft_complex.h"
 # include "ft_ctype.h"
-# include "ft_error.h"
 # include "ft_list.h"
 # include "ft_math.h"
 # include "ft_stdio.h"
