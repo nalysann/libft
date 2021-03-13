@@ -14,5 +14,5 @@
 
 int		ft_isprint(int c)
 {
-	return (ft_isgraph(c) || c == ' ');
+	return (' ' <= c && c <= '~');
 }

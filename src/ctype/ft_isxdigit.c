@@ -14,5 +14,7 @@
 
 int		ft_isxdigit(int c)
 {
-	return (ft_isdigit(c) || ('A' <= c && c <= 'F') || ('a' <= c && c <= 'f'));
+	return (('0' <= c && c <= '9') ||
+			('A' <= c && c <= 'F') ||
+			('a' <= c && c <= 'f'));
 }
