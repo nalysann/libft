@@ -37,7 +37,7 @@ static char		*process_buffer(char **buffer, char *endl)
 	return (str);
 }
 
-int				get_next_line(const int fd, char **line)
+int				get_next_line(int fd, char **line)
 {
 	static char		*buffers[FD_MAX];
 	char			buf[BUF_SIZE + 1];
