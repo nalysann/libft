@@ -11,20 +11,23 @@
 /* ************************************************************************** */
 
 #include "ft_stdio.h"
+#include "ft_stdlib.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	long long	nbr;
+	char	digits[9];
+	int		i;
 
-	nbr = n;
-	if (nbr < 0)
-	{
+	if (n < 0)
 		ft_putchar_fd('-', fd);
-		nbr = -nbr;
-	}
-	if (nbr > 9)
+	i = 0;
+	if (n == 0)
+		digits[i++] = '0';
+	while (n != 0)
 	{
-		ft_putnbr_fd(nbr / 10, fd);
+		digits[i++] = (char)('0' + ft_abs(n % 10));
+		n /= 10;
 	}
-	ft_putchar_fd('0' + nbr % 10, fd);
+	while (i--)
+		ft_putchar_fd(digits[i], fd);
 }
