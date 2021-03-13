@@ -20,7 +20,7 @@ include_directories(include)
 include_directories(include/internal)
 include_directories(include/internal/printf)
 
-add_library(ft STATIC
+SET(PRINTF_INC
         include/internal/printf/pf_bigint.h
         include/internal/printf/pf_buffer.h
         include/internal/printf/pf_handle_asterisk.h
@@ -31,11 +31,17 @@ add_library(ft STATIC
         include/internal/printf/pf_print_placeholder.h
         include/internal/printf/pf_read_fields.h
         include/internal/printf/pf_type_handlers.h
-        include/internal/printf/pf_utils.h
+        include/internal/printf/pf_utils.h)
+
+SET(INTERNAL_INC
+        ${PRINTF_INC}
         include/internal/in_error.h
         include/internal/in_get_next_line.h
         include/internal/in_strtol.h
-        include/internal/in_strtoll.h
+        include/internal/in_strtoll.h)
+
+SET(INC
+        ${INTERNAL_INC}
         include/ft_complex.h
         include/ft_ctype.h
         include/ft_list.h
@@ -44,13 +50,17 @@ add_library(ft STATIC
         include/ft_stdlib.h
         include/ft_string.h
         include/ft_vector.h
-        include/libft.h
+        include/libft.h)
+
+SET(COMPLEX_SRC
         src/complex/complex_abs.c
         src/complex/complex_add.c
         src/complex/complex_div.c
         src/complex/complex_init.c
         src/complex/complex_mul.c
-        src/complex/complex_sub.c
+        src/complex/complex_sub.c)
+
+SET(CTYPE_SRC
         src/ctype/ft_digittoint.c
         src/ctype/ft_isalnum.c
         src/ctype/ft_isalpha.c
@@ -66,13 +76,17 @@ add_library(ft STATIC
         src/ctype/ft_isupper.c
         src/ctype/ft_isxdigit.c
         src/ctype/ft_tolower.c
-        src/ctype/ft_toupper.c
+        src/ctype/ft_toupper.c)
+
+SET(LIST_SRC
         src/list/list_free.c
         src/list/list_init.c
         src/list/list_pop_back.c
         src/list/list_pop_front.c
         src/list/list_push_back.c
-        src/list/list_push_front.c
+        src/list/list_push_front.c)
+
+SET(MATH_SRC
         src/math/ft_fabs.c
         src/math/ft_fabsf.c
         src/math/ft_fabsl.c
@@ -87,7 +101,9 @@ add_library(ft STATIC
         src/math/ft_lmax.c
         src/math/ft_lmin.c
         src/math/ft_max.c
-        src/math/ft_min.c
+        src/math/ft_min.c)
+
+SET(PRINTF_SRC
         src/stdio/printf/ft_printf.c
         src/stdio/printf/pf_bigint.c
         src/stdio/printf/pf_buffer.c
@@ -111,7 +127,10 @@ add_library(ft STATIC
         src/stdio/printf/pf_print_placeholder.c
         src/stdio/printf/pf_read_fields.c
         src/stdio/printf/pf_utils_1.c
-        src/stdio/printf/pf_utils_2.c
+        src/stdio/printf/pf_utils_2.c)
+
+SET(STDIO_SRC
+        ${PRINTF_SRC}
         src/stdio/ft_error.c
         src/stdio/ft_putchar.c
         src/stdio/ft_putchar_fd.c
@@ -121,44 +140,56 @@ add_library(ft STATIC
         src/stdio/ft_putnbr_fd.c
         src/stdio/ft_putstr.c
         src/stdio/ft_putstr_fd.c
-        src/stdio/get_next_line.c
+        src/stdio/get_next_line.c)
+
+SET(STDLIB_SRC
         src/stdlib/free_split.c
         src/stdlib/ft_abs.c
         src/stdlib/ft_atoi.c
         src/stdlib/ft_atol.c
         src/stdlib/ft_atoll.c
+        src/stdlib/ft_intlen.c
         src/stdlib/ft_itoa.c
         src/stdlib/ft_labs.c
         src/stdlib/ft_llabs.c
         src/stdlib/ft_memalloc.c
         src/stdlib/ft_memdel.c
+        src/stdlib/ft_qsort.c
         src/stdlib/ft_strdel.c
         src/stdlib/ft_strnew.c
         src/stdlib/ft_strtol.c
         src/stdlib/ft_strtoll.c
-        src/stdlib/ft_swap.c
+        src/stdlib/ft_swap.c)
+
+SET(STRING_SRC
         src/string/ft_bzero.c
         src/string/ft_memccpy.c
         src/string/ft_memchr.c
         src/string/ft_memcmp.c
         src/string/ft_memcpy.c
+        src/string/ft_memdup.c
         src/string/ft_memmove.c
         src/string/ft_mempcpy.c
         src/string/ft_memset.c
+        src/string/ft_stpcpy.c
+        src/string/ft_stpncpy.c
         src/string/ft_strcasecmp.c
         src/string/ft_strcat.c
         src/string/ft_strchr.c
         src/string/ft_strclr.c
         src/string/ft_strcmp.c
+        src/string/ft_strcnt.c
         src/string/ft_strcpy.c
         src/string/ft_strdup.c
         src/string/ft_strequ.c
         src/string/ft_striter.c
         src/string/ft_striteri.c
+        src/string/ft_strjmp.c
         src/string/ft_strjoin.c
         src/string/ft_strlcat.c
         src/string/ft_strlcpy.c
         src/string/ft_strlen.c
+        src/string/ft_strlower.c
         src/string/ft_strmap.c
         src/string/ft_strmapi.c
         src/string/ft_strncasecmp.c
@@ -170,14 +201,33 @@ add_library(ft STATIC
         src/string/ft_strnlen.c
         src/string/ft_strnstr.c
         src/string/ft_strrchr.c
+        src/string/ft_strrev.c
         src/string/ft_strsplit.c
         src/string/ft_strstr.c
         src/string/ft_strsub.c
         src/string/ft_strtrim.c
+        src/string/ft_strupper.c)
+
+SET(VECTOR_SRC
         src/vector/vector_free.c
         src/vector/vector_get.c
         src/vector/vector_init.c
         src/vector/vector_pop_back.c
         src/vector/vector_push_back.c
         src/vector/vector_resize.c
-        src/vector/vector_set.c)
+        src/vector/vector_set.c
+        src/vector/vector_sort.c)
+
+SET(SRC
+        ${COMPLEX_SRC}
+        ${CTYPE_SRC}
+        ${LIST_SRC}
+        ${MATH_SRC}
+        ${STDIO_SRC}
+        ${STDLIB_SRC}
+        ${STRING_SRC}
+        ${VECTOR_SRC})
+
+add_library(ft STATIC
+        ${INC}
+        ${SRC})
