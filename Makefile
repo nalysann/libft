@@ -152,11 +152,13 @@ STDLIB_SRC := free_split.c \
               ft_atoi.c \
               ft_atol.c \
               ft_atoll.c \
+              ft_intlen.c \
               ft_itoa.c \
               ft_labs.c \
               ft_llabs.c \
               ft_memalloc.c \
               ft_memdel.c \
+              ft_qsort.c \
               ft_strdel.c \
               ft_strnew.c \
               ft_strtol.c \
@@ -176,23 +178,29 @@ STRING_SRC := ft_bzero.c \
               ft_memchr.c \
               ft_memcmp.c \
               ft_memcpy.c \
+              ft_memdup.c \
               ft_memmove.c \
               ft_mempcpy.c \
               ft_memset.c \
+              ft_stpcpy.c \
+              ft_stpncpy.c \
               ft_strcasecmp.c \
               ft_strcat.c \
               ft_strchr.c \
               ft_strclr.c \
               ft_strcmp.c \
+              ft_strcnt.c \
               ft_strcpy.c \
               ft_strdup.c \
               ft_strequ.c \
               ft_striter.c \
               ft_striteri.c \
+              ft_strjmp.c \
               ft_strjoin.c \
               ft_strlcat.c \
               ft_strlcpy.c \
               ft_strlen.c \
+              ft_strlower.c \
               ft_strmap.c \
               ft_strmapi.c \
               ft_strncasecmp.c \
@@ -204,10 +212,12 @@ STRING_SRC := ft_bzero.c \
               ft_strnlen.c \
               ft_strnstr.c \
               ft_strrchr.c \
+              ft_strrev.c \
               ft_strsplit.c \
               ft_strstr.c \
               ft_strsub.c \
               ft_strtrim.c \
+              ft_strupper.c \
 
 STRING_SRC := $(addprefix $(STRING_DIR)/, $(STRING_SRC))
 STRING_OBJ := $(STRING_SRC:.c=.o)
@@ -224,6 +234,7 @@ VECTOR_SRC := vector_free.c \
               vector_push_back.c \
               vector_resize.c \
               vector_set.c \
+              vector_sort.c \
 
 VECTOR_SRC := $(addprefix $(VECTOR_DIR)/, $(VECTOR_SRC))
 VECTOR_OBJ := $(VECTOR_SRC:.c=.o)
@@ -275,7 +286,7 @@ endif
 
 CFLAGS += -Wall -Wextra -Werror \
           $(addprefix -I , $(INC_DIR)) \
-          -MD \
+          -MMD \
           -O2 -march=native -ftree-vectorize -pipe
 
 # **************************************************************************** #
@@ -316,8 +327,6 @@ $(OBJ_DIR)/$(COMPLEX_DIR)/%.o: $(SRC_DIR)/$(COMPLEX_DIR)/%.c | $(OBJ_DIR)/$(COMP
 	$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(RESET)"
 
--include $(OBJ_DIR)/$(COMPLEX_DEP)
-
 # **************************************************************************** #
 
 $(OBJ_DIR)/$(CTYPE_DIR):
@@ -327,8 +336,6 @@ $(OBJ_DIR)/$(CTYPE_DIR)/%.o: $(SRC_DIR)/$(CTYPE_DIR)/%.c | $(OBJ_DIR)/$(CTYPE_DI
 	@printf "$(MAGENTA)"
 	$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(RESET)"
-
--include $(OBJ_DIR)/$(CTYPE_DEP)
 
 # **************************************************************************** #
 
@@ -340,8 +347,6 @@ $(OBJ_DIR)/$(LIST_DIR)/%.o: $(SRC_DIR)/$(LIST_DIR)/%.c | $(OBJ_DIR)/$(LIST_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(RESET)"
 
--include $(OBJ_DIR)/$(LIST_DEP)
-
 # **************************************************************************** #
 
 $(OBJ_DIR)/$(MATH_DIR):
@@ -351,8 +356,6 @@ $(OBJ_DIR)/$(MATH_DIR)/%.o: $(SRC_DIR)/$(MATH_DIR)/%.c | $(OBJ_DIR)/$(MATH_DIR)
 	@printf "$(MAGENTA)"
 	$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(RESET)"
-
--include $(OBJ_DIR)/$(MATH_DEP)
 
 # **************************************************************************** #
 
@@ -372,8 +375,6 @@ $(OBJ_DIR)/$(STDIO_DIR)/%.o: $(SRC_DIR)/$(STDIO_DIR)/%.c | $(OBJ_DIR)/$(STDIO_DI
 	$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(RESET)"
 
--include $(OBJ_DIR)/$(STDIO_DEP)
-
 # **************************************************************************** #
 
 $(OBJ_DIR)/$(STDLIB_DIR):
@@ -383,8 +384,6 @@ $(OBJ_DIR)/$(STDLIB_DIR)/%.o: $(SRC_DIR)/$(STDLIB_DIR)/%.c | $(OBJ_DIR)/$(STDLIB
 	@printf "$(MAGENTA)"
 	$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(RESET)"
-
--include $(OBJ_DIR)/$(STDLIB_DEP)
 
 # **************************************************************************** #
 
@@ -396,8 +395,6 @@ $(OBJ_DIR)/$(STRING_DIR)/%.o: $(SRC_DIR)/$(STRING_DIR)/%.c | $(OBJ_DIR)/$(STRING
 	$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(RESET)"
 
--include $(OBJ_DIR)/$(STRING_DEP)
-
 # **************************************************************************** #
 
 $(OBJ_DIR)/$(VECTOR_DIR):
@@ -408,7 +405,9 @@ $(OBJ_DIR)/$(VECTOR_DIR)/%.o: $(SRC_DIR)/$(VECTOR_DIR)/%.c | $(OBJ_DIR)/$(VECTOR
 	$(CC) $(CFLAGS) -c $< -o $@
 	@printf "$(RESET)"
 
--include $(OBJ_DIR)/$(VECTOR_DEP)
+# **************************************************************************** #
+
+-include $(DEP)
 
 # **************************************************************************** #
 
