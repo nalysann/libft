@@ -24,7 +24,7 @@ void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr(const char *s);
 void	ft_putstr_fd(const char *s, int fd);
 
-int		get_next_line(const int fd, char **line);
+int		get_next_line(int fd, char **line);
 
 int		ft_printf(const char *format, ...);
 int		ft_dprintf(int fd, const char *format, ...);
