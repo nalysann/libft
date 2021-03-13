@@ -15,32 +15,17 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-static size_t	get_length(int n)
-{
-	size_t	len;
-
-	len = (n <= 0 ? 1 : 0);
-	while (n != 0)
-	{
-		++len;
-		n /= 10;
-	}
-	return (len);
-}
-
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	size_t	len;
 	size_t	sign;
 	char	*str;
 
-	sign = (n < 0 ? 1 : 0);
-	len = get_length(n);
+	len = ft_intlen(n);
+	sign = n < 0;
 	str = (char *)malloc(len + 1);
 	if (str == NULL)
-	{
 		return (NULL);
-	}
 	str[len] = '\0';
 	while (len > sign)
 	{
@@ -48,8 +33,6 @@ char			*ft_itoa(int n)
 		n /= 10;
 	}
 	if (sign != 0)
-	{
 		str[--len] = '-';
-	}
 	return (str);
 }

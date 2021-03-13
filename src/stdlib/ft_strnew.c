@@ -13,9 +13,8 @@
 #include "ft_stdlib.h"
 
 #include <stddef.h>
-#include <stdint.h>
 
 char	*ft_strnew(size_t size)
 {
-	return ((size == SIZE_MAX) ? NULL : (char *)ft_memalloc(size + 1));
+	return (ft_memalloc(size + 1));
 }

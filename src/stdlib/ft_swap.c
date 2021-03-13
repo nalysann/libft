@@ -14,20 +14,16 @@
 
 void	ft_swap(void *a, void *b, size_t size)
 {
-	unsigned char	*ua;
-	unsigned char	*ub;
+	unsigned char	*a_uchar;
+	unsigned char	*b_uchar;
 	unsigned char	tmp;
 
-	if (size == 0)
+	a_uchar = a;
+	b_uchar = b;
+	while (size--)
 	{
-		return ;
-	}
-	ua = (unsigned char *)a;
-	ub = (unsigned char *)b;
-	while (size-- > 0)
-	{
-		tmp = *ua;
-		*ua++ = *ub;
-		*ub++ = tmp;
+		tmp = *a_uchar;
+		*a_uchar++ = *b_uchar;
+		*b_uchar++ = tmp;
 	}
 }

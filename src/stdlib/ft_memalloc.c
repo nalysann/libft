@@ -21,14 +21,10 @@ void	*ft_memalloc(size_t size)
 
 	area = NULL;
 	if (size == 0)
-	{
 		return (NULL);
-	}
 	area = malloc(size);
 	if (area == NULL)
-	{
 		return (NULL);
-	}
-	ft_bzero(area, size);
+	ft_memset(area, 0, size);
 	return (area);
 }
