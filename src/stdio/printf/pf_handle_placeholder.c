@@ -47,7 +47,7 @@ int				handle_placeholder(const char **format, va_list ap,
 	t_fields	fields;
 
 	++(*format);
-	ft_bzero(&fields, sizeof(t_fields));
+	ft_memset(&fields, 0, sizeof(t_fields));
 	read_fields(format, &fields);
 	handle_asterisk(&fields, ap);
 	fix_fields(&fields);

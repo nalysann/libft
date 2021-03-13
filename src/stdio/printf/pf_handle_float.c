@@ -102,8 +102,8 @@ void			print_bigfloat(t_bigfloat *bf, t_fields *fields, char *result)
 	t_string	decimal;
 	t_string	fractional;
 
-	ft_bzero(&decimal, sizeof(decimal));
-	ft_bzero(&fractional, sizeof(fractional));
+	ft_memset(&decimal, 0, sizeof(decimal));
+	ft_memset(&fractional, 0, sizeof(fractional));
 	print_decimal_part(bf, &decimal);
 	print_leading_zeros(bf, fields, &precision, &fractional);
 	i = bf->fractional.size - 1;
@@ -132,7 +132,7 @@ char			*handle_float(t_fields *fields, va_list ap)
 		return (NULL);
 	result[0] = '\0';
 	ext.value = get_float(ap, fields->length);
-	ft_bzero(&bf, sizeof(bf));
+	ft_memset(&bf, 0, sizeof(bf));
 	bf.decimal.size = 1;
 	bf.fractional.size = 1;
 	if (!is_special(ext, fields, result))

@@ -24,7 +24,7 @@ char	*handle_invalid(t_fields *fields, va_list ap)
 
 	if (!(result = ft_strnew(0)))
 		return (NULL);
-	ft_bzero(fields, sizeof(*fields));
+	ft_memset(fields, 0, sizeof(*fields));
 	(void)ap;
 	return (result);
 }

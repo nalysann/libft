@@ -28,7 +28,7 @@ unsigned long long	g_powers_of_five[] =
 	1953125,
 	9765625,
 	48828125,
-	244140625
+	244140625,
 };
 
 void		bigint_add(t_bigint *this, t_bigint *other)
@@ -95,7 +95,7 @@ void		bigint_mul_ull(t_bigint *this, unsigned long long other)
 
 void		bigint_power_of_five(t_bigint *this, unsigned power)
 {
-	ft_bzero(this, sizeof(*this));
+	ft_memset(this, 0, sizeof(*this));
 	if (power <= 12)
 	{
 		this->blocks[0] = g_powers_of_five[power];
