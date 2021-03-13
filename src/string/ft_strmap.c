@@ -17,22 +17,20 @@
 
 char	*ft_strmap(const char *s, char (*f)(char))
 {
-	char	*str;
+	char	*new;
 	size_t	len;
 	size_t	i;
 
 	len = ft_strlen(s);
-	str = (char *)malloc(len + 1);
-	if (str == NULL)
-	{
+	new = (char *)malloc(len + 1);
+	if (new == NULL)
 		return (NULL);
-	}
 	i = 0;
 	while (i < len)
 	{
-		str[i] = f(s[i]);
+		new[i] = f(s[i]);
 		++i;
 	}
-	str[i] = '\0';
-	return (str);
+	new[i] = '\0';
+	return (new);
 }

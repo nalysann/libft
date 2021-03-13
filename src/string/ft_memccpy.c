@@ -10,19 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_string.h"
-
 #include <stddef.h>
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	void	*loc;
+	unsigned char			*dst_uchar;
+	const unsigned char		*src_uchar;
+	unsigned char			uc;
 
-	loc = ft_memchr(src, c, n);
-	if (loc != NULL)
-	{
-		return (ft_mempcpy(dst, src, loc - src + 1));
-	}
-	ft_memcpy(dst, src, n);
+	dst_uchar = dst;
+	src_uchar = src;
+	uc = (unsigned char)c;
+	while (n--)
+		if ((*dst_uchar++ = *src_uchar++) == uc)
+			return (dst_uchar);
 	return (NULL);
 }

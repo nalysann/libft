@@ -13,22 +13,8 @@
 #include "ft_string.h"
 
 #include <stddef.h>
-#include <stdint.h>
-#include <stdlib.h>
 
-char	*ft_strsub(const char *s, unsigned int start, size_t len)
+char	*ft_strsub(const char *s, unsigned start, size_t len)
 {
-	char	*substr;
-
-	if (len == SIZE_MAX)
-	{
-		return (NULL);
-	}
-	substr = (char *)malloc(len + 1);
-	if (substr == NULL)
-	{
-		return (NULL);
-	}
-	substr[len] = '\0';
-	return (ft_strncpy(substr, s + start, len));
+	return (ft_strndup(s + start, len));
 }

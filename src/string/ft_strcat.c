@@ -14,6 +14,5 @@
 
 char	*ft_strcat(char *s1, const char *s2)
 {
-	ft_strcpy(s1 + ft_strlen(s1), s2);
-	return (s1);
+	return (ft_strcpy(s1 + ft_strlen(s1), s2));
 }

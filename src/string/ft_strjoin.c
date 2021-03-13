@@ -18,23 +18,18 @@
 
 char	*ft_strjoin(const char *s1, const char *s2)
 {
-	char	*str;
-	size_t	s1_len;
-	size_t	s2_len;
+	char	*new;
+	size_t	len1;
+	size_t	len2;
 
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	if (s2_len > SIZE_MAX - s1_len - 1)
-	{
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	if (len2 > SIZE_MAX - len1 - 1)
 		return (NULL);
-	}
-	str = (char *)malloc(s1_len + s2_len + 1);
-	if (str == NULL)
-	{
+	new = (char *)malloc(len1 + len2 + 1);
+	if (new == NULL)
 		return (NULL);
-	}
-	ft_memcpy(str, s1, s1_len);
-	ft_memcpy(str + s1_len, s2, s2_len);
-	str[s1_len + s2_len] = '\0';
-	return (str);
+	ft_memcpy(new, s1, len1);
+	ft_memcpy(new + len1, s2, len2 + 1);
+	return (new);
 }

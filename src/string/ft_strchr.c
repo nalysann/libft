@@ -10,9 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_string.h"
+#include <stddef.h>
 
 char	*ft_strchr(const char *s, int c)
 {
-	return ((char *)ft_memchr(s, c, ft_strlen(s) + 1));
+	while (*s != (char)c)
+		if (*s++ == '\0')
+			return (NULL);
+	return ((char *)s);
 }
