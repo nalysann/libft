@@ -27,7 +27,7 @@ void	vector_push_back(t_vector *vector, void *item)
 		if (data_ == NULL)
 		{
 			vector->capacity = VECTOR_BAD_CAPACITY;
-			return;
+			return ;
 		}
 		ft_memmove(data_, vector->data, sizeof(void *) * vector->capacity);
 		free(vector->data);

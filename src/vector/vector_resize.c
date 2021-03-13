@@ -28,7 +28,7 @@ void	vector_resize(t_vector *vector, size_t new_size)
 		if (data_ == NULL)
 		{
 			vector->capacity = VECTOR_BAD_CAPACITY;
-			return;
+			return ;
 		}
 		ft_memmove(data_, vector->data, sizeof(void *) * vector->size);
 		free(vector->data);

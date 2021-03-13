@@ -46,5 +46,7 @@ void			*vector_pop_back(t_vector *vector);
 void			vector_push_back(t_vector *vector, void *item);
 void			vector_resize(t_vector *vector, size_t new_size);
 void			vector_set(t_vector *vector, size_t idx, void *item);
+void			vector_sort(t_vector *vector,
+				int (*cmp)(const void *, const void *));
 
 #endif
