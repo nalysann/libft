@@ -242,63 +242,63 @@ VECTOR_DEP := $(VECTOR_SRC:.c=.d)
 
 # **************************************************************************** #
 
-INC_DIR = include \
-          include/internal \
-          include/internal/printf
+INC_DIRS := include \
+            include/internal \
+            include/internal/printf \
 
 # **************************************************************************** #
 
-OBJ_DIR = obj
+OBJ_DIR := obj
 
-OBJ = $(addprefix $(OBJ_DIR)/, $(COMPLEX_OBJ) \
-                               $(CTYPE_OBJ) \
-                               $(LIST_OBJ) \
-                               $(MATH_OBJ) \
-                               $(STDIO_OBJ) \
-                               $(STDLIB_OBJ) \
-                               $(STRING_OBJ) \
-                               $(VECTOR_OBJ) \
-                               )
+OBJ := $(addprefix $(OBJ_DIR)/, $(COMPLEX_OBJ) \
+                                $(CTYPE_OBJ) \
+                                $(LIST_OBJ) \
+                                $(MATH_OBJ) \
+                                $(STDIO_OBJ) \
+                                $(STDLIB_OBJ) \
+                                $(STRING_OBJ) \
+                                $(VECTOR_OBJ) \
+                                )
 
-DEP = $(addprefix $(OBJ_DIR)/, $(COMPLEX_DEP) \
-                               $(CTYPE_DEP) \
-                               $(LIST_DEP) \
-                               $(MATH_DEP) \
-                               $(STDIO_DEP) \
-                               $(STDLIB_DEP) \
-                               $(STRING_DEP) \
-                               $(VECTOR_DEP) \
-                               )
+DEP := $(addprefix $(OBJ_DIR)/, $(COMPLEX_DEP) \
+                                $(CTYPE_DEP) \
+                                $(LIST_DEP) \
+                                $(MATH_DEP) \
+                                $(STDIO_DEP) \
+                                $(STDLIB_DEP) \
+                                $(STRING_DEP) \
+                                $(VECTOR_DEP) \
+                                )
 
 # **************************************************************************** #
 
-UNAME_S = $(shell uname -s)
+UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S), Darwin)
-	CC = clang
+    CC := clang
 endif
 
 ifeq ($(UNAME_S), Linux)
-	CC = gcc
+    CC := gcc
 endif
 
 # **************************************************************************** #
 
 CFLAGS += -Wall -Wextra -Werror \
-          $(addprefix -I , $(INC_DIR)) \
+          $(addprefix -I , $(INC_DIRS)) \
           -MMD \
           -O2 -march=native -ftree-vectorize -pipe
 
 # **************************************************************************** #
 
-RESET = \033[0;0m
-RED = \033[0;31m
-GREEN = \033[0;32m
-YELLOW = \033[0;33m
-BLUE = \033[0;34m
-MAGENTA = \033[0;35m
-CYAN = \033[0;36m
-WHITE = \033[0;37m
+RESET   := \033[0;0m
+RED     := \033[0;31m
+GREEN   := \033[0;32m
+YELLOW  := \033[0;33m
+BLUE    := \033[0;34m
+MAGENTA := \033[0;35m
+CYAN    := \033[0;36m
+WHITE   := \033[0;37m
 
 # **************************************************************************** #
 
