@@ -192,6 +192,7 @@ STRING_SRC := ft_bzero.c \
               ft_strcnt.c \
               ft_strcpy.c \
               ft_strdup.c \
+              ft_strendswith.c \
               ft_strequ.c \
               ft_striter.c \
               ft_striteri.c \
@@ -214,6 +215,7 @@ STRING_SRC := ft_bzero.c \
               ft_strrchr.c \
               ft_strrev.c \
               ft_strsplit.c \
+              ft_strstartswith.c \
               ft_strstr.c \
               ft_strsub.c \
               ft_strtrim.c \

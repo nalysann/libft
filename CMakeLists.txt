@@ -181,6 +181,7 @@ SET(STRING_SRC
         src/string/ft_strcnt.c
         src/string/ft_strcpy.c
         src/string/ft_strdup.c
+        src/string/ft_strendswith.c
         src/string/ft_strequ.c
         src/string/ft_striter.c
         src/string/ft_striteri.c
@@ -203,6 +204,7 @@ SET(STRING_SRC
         src/string/ft_strrchr.c
         src/string/ft_strrev.c
         src/string/ft_strsplit.c
+        src/string/ft_strstartswith.c
         src/string/ft_strstr.c
         src/string/ft_strsub.c
         src/string/ft_strtrim.c
