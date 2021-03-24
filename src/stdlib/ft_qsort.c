@@ -22,14 +22,16 @@ static void		*hoare(void *left, void *right, size_t size,
 	void	*j;
 
 	pivot = left + (right - left) / size / 2 * size;
-	i = left;
-	j = right;
+	i = left - size;
+	j = right + size;
 	while (1)
 	{
+		i += size;
 		while (cmp(i, pivot) < 0)
-			++i;
+			i += size;
+		j -= size;
 		while (cmp(j, pivot) > 0)
-			--j;
+			j -= size;
 		if (i >= j)
 			return (j);
 		ft_swap(i, j, size);
@@ -44,7 +46,7 @@ static void		quicksort(void *left, void *right, size_t size,
 	if (left < right)
 	{
 		pivot = hoare(left, right, size, cmp);
-		quicksort(left, pivot - size, size, cmp);
+		quicksort(left, pivot, size, cmp);
 		quicksort(pivot + size, right, size, cmp);
 	}
 }
