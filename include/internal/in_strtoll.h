@@ -1,19 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   in_strtoll.h                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 14:43:02 by nalysann          #+#    #+#             */
-/*   Updated: 2021/03/04 14:43:02 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef IN_STRTOLL_H
 # define IN_STRTOLL_H
 
-typedef struct	s_strtoll
+struct s_strtoll
 {
 	const char			*str;
 	int					base;
@@ -21,6 +9,8 @@ typedef struct	s_strtoll
 	int					c;
 	int					any;
 	unsigned long long	res;
-}				t_strtoll;
+};
+
+typedef struct s_strtoll	t_strtoll;
 
 #endif

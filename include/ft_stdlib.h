@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_stdlib.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 10:30:55 by nalysann          #+#    #+#             */
-/*   Updated: 2020/09/10 16:38:17 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef FT_STDLIB_H
 # define FT_STDLIB_H
 
@@ -27,7 +15,7 @@ long long	ft_llabs(long long i);
 void		*ft_memalloc(size_t size);
 void		ft_memdel(void **ap);
 void		ft_qsort(void *data, size_t len, size_t size,
-					int (*cmp)(const void *, const void *));
+				int (*cmp)(const void *, const void *));
 void		ft_strdel(char **as);
 char		*ft_strnew(size_t size);
 long		ft_strtol(const char *str, char **endptr, int base);

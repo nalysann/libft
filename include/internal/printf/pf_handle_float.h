@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   pf_handle_float.h                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 10:27:33 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/27 10:27:39 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef PF_HANDLE_FLOAT_H
 # define PF_HANDLE_FLOAT_H
 
@@ -17,9 +5,9 @@
 
 # include <stdarg.h>
 
-# define EXPONENT_SHIFT		16383
+# define EXPONENT_SHIFT 16383
 
-typedef union				u_extended
+union u_extended
 {
 	long double				value;
 	struct
@@ -28,8 +16,10 @@ typedef union				u_extended
 		unsigned			exponent : 15;
 		unsigned			sign : 1;
 	}						s_;
-}							t_extended;
+};
 
-char						*handle_float(t_fields *fields, va_list ap);
+typedef union u_extended	t_extended;
+
+char	*handle_float(t_fields *fields, va_list ap);
 
 #endif
