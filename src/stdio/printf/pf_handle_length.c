@@ -1,23 +1,11 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   pf_handle_length.c                                 :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 10:55:20 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/27 10:55:20 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "pf_handle_placeholder.h"
-
 #include <inttypes.h>
 #include <stdarg.h>
 #include <stddef.h>
 #include <sys/types.h>
 
-long long			get_signed(va_list ap, unsigned int length)
+#include "pf_handle_placeholder.h"
+
+long long	get_signed(va_list ap, unsigned int length)
 {
 	if (length & LENGTH_HH)
 		return ((char)va_arg(ap, int));
@@ -55,7 +43,7 @@ unsigned long long	get_unsigned(va_list ap, unsigned int length)
 	return (va_arg(ap, unsigned));
 }
 
-long double			get_float(va_list ap, unsigned int length)
+long double	get_float(va_list ap, unsigned int length)
 {
 	if (length & LENGTH_L_LOWER)
 		return (va_arg(ap, double));

@@ -1,9 +1,9 @@
 #ifndef PF_TYPE_HANDLERS_H
 # define PF_TYPE_HANDLERS_H
 
-# include "pf_handle_placeholder.h"
-
 # include <stdarg.h>
+
+# include "pf_handle_placeholder.h"
 
 char	*handle_char(t_fields *fields, va_list ap);
 char	*handle_string(t_fields *fields, va_list ap);

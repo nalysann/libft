@@ -1,24 +1,12 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   pf_buffer.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 10:53:08 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/27 10:53:10 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "pf_buffer.h"
-
-#include "ft_string.h"
-
 #include <stdbool.h>
 #include <stddef.h>
 #include <unistd.h>
 
-static void		init_buffer(t_buffer *buf, bool *buf_initialized)
+#include "ft_string.h"
+
+#include "pf_buffer.h"
+
+static void	init_buffer(t_buffer *buf, bool *buf_initialized)
 {
 	buf->fd = STDOUT_FILENO;
 	ft_strclr(buf->str);
@@ -26,7 +14,7 @@ static void		init_buffer(t_buffer *buf, bool *buf_initialized)
 	*buf_initialized = true;
 }
 
-void			flush_buffer(t_buffer *buf, int fd)
+void	flush_buffer(t_buffer *buf, int fd)
 {
 	write(buf->fd, buf->str, buf->len);
 	buf->fd = fd;
@@ -34,7 +22,7 @@ void			flush_buffer(t_buffer *buf, int fd)
 	buf->len = 0;
 }
 
-void			check_buffer(t_buffer *buf, int fd)
+void	check_buffer(t_buffer *buf, int fd)
 {
 	static bool		buf_initialized = false;
 
@@ -44,7 +32,7 @@ void			check_buffer(t_buffer *buf, int fd)
 		flush_buffer(buf, fd);
 }
 
-void			add_to_buffer(t_buffer *buf, const char *str, size_t len)
+void	add_to_buffer(t_buffer *buf, const char *str, size_t len)
 {
 	size_t	tmp;
 

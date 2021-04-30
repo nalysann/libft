@@ -1,9 +1,9 @@
 #ifndef PF_HANDLE_FLOAT_H
 # define PF_HANDLE_FLOAT_H
 
-# include "pf_handle_placeholder.h"
-
 # include <stdarg.h>
+
+# include "pf_handle_placeholder.h"
 
 # define EXPONENT_SHIFT 16383
 

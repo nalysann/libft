@@ -1,9 +1,9 @@
 #ifndef PF_UTILS_H
 # define PF_UTILS_H
 
-# include "pf_bigint.h"
-
 # include <stddef.h>
+
+# include "pf_bigint.h"
 
 void	ft_atoi_skip(const char **str);
 size_t	get_length_signed(long long nbr, long long base);

@@ -1,18 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   pf_bigint.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 10:53:00 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/27 10:53:01 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "ft_string.h"
 
 #include "pf_bigint.h"
-
-#include "ft_string.h"
 
 unsigned long long	g_powers_of_five[] =
 {
@@ -31,14 +19,17 @@ unsigned long long	g_powers_of_five[] =
 	244140625,
 };
 
-void		bigint_add(t_bigint *this, t_bigint *other)
+void	bigint_add(t_bigint *this, t_bigint *other)
 {
-	unsigned			size;
+	unsigned int		size;
 	unsigned long long	sum;
 	unsigned long long	carry;
-	unsigned			i;
+	unsigned int		i;
 
-	size = (this->size > other->size ? this->size : other->size);
+	if (this->size > other->size)
+		size = this->size;
+	else
+		size = other->size;
 	carry = 0;
 	i = 0;
 	while (i < size)
@@ -49,14 +40,17 @@ void		bigint_add(t_bigint *this, t_bigint *other)
 		++i;
 	}
 	this->blocks[i] = carry;
-	this->size = (carry == 0 ? size : size + 1);
+	if (carry)
+		this->size = size + 1;
+	else
+		this->size = size;
 }
 
-void		bigint_add_ull(t_bigint *this, unsigned long long other)
+void	bigint_add_ull(t_bigint *this, unsigned long long other)
 {
 	unsigned long long	sum;
 	unsigned long long	carry;
-	unsigned			i;
+	unsigned int		i;
 
 	sum = this->blocks[0] + other;
 	this->blocks[0] = sum % BIGINT_BASE;
@@ -73,11 +67,11 @@ void		bigint_add_ull(t_bigint *this, unsigned long long other)
 		this->size = i;
 }
 
-void		bigint_mul_ull(t_bigint *this, unsigned long long other)
+void	bigint_mul_ull(t_bigint *this, unsigned long long other)
 {
 	unsigned long long	product;
 	unsigned long long	carry;
-	unsigned			i;
+	unsigned int		i;
 
 	carry = 0;
 	i = 0;
@@ -93,7 +87,7 @@ void		bigint_mul_ull(t_bigint *this, unsigned long long other)
 		++(this->size);
 }
 
-void		bigint_power_of_five(t_bigint *this, unsigned power)
+void	bigint_power_of_five(t_bigint *this, unsigned int power)
 {
 	ft_memset(this, 0, sizeof(*this));
 	if (power <= 12)
@@ -105,6 +99,7 @@ void		bigint_power_of_five(t_bigint *this, unsigned power)
 	this->blocks[0] = 1ULL;
 	this->size = 1;
 	while (power > 0)
+	{
 		if (power >= 12)
 		{
 			bigint_mul_ull(this, g_powers_of_five[12]);
@@ -115,4 +110,5 @@ void		bigint_power_of_five(t_bigint *this, unsigned power)
 			bigint_mul_ull(this, g_powers_of_five[power]);
 			power = 0;
 		}
+	}
 }

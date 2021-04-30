@@ -1,9 +1,9 @@
 #ifndef PF_HANDLE_PLACEHOLDER_H
 # define PF_HANDLE_PLACEHOLDER_H
 
-# include "pf_buffer.h"
-
 # include <stdarg.h>
+
+# include "pf_buffer.h"
 
 # define SUPPORTED_FLAGS "#0-+ "
 # define FLAG_HASH 1U

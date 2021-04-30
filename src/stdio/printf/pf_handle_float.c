@@ -1,35 +1,23 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   pf_handle_float.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 10:54:16 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/27 10:54:17 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include <stdarg.h>
+#include <stdbool.h>
+#include <stddef.h>
+
+#include "ft_stdlib.h"
+#include "ft_string.h"
 
 #include "pf_handle_bigfloat.h"
 #include "pf_handle_float.h"
 #include "pf_handle_length.h"
 #include "pf_handle_placeholder.h"
 
-#include "ft_stdlib.h"
-#include "ft_string.h"
-
-#include <stdarg.h>
-#include <stdbool.h>
-#include <stddef.h>
-
-static void		initialize_decimal_part(t_bigfloat *bf, t_extended ext)
+static void	initialize_decimal_part(t_bigfloat *bf, t_extended ext)
 {
 	int		i;
 
 	if (bf->exponent >= 0)
 		bf->decimal.blocks[0] = 1ULL;
 	bf->decimal.size = 1;
-	bf->sign = ext.s_.sign;
+	bf->sign = (int)ext.s_.sign;
 	if (bf->exponent > 0)
 	{
 		i = 62;
@@ -43,19 +31,22 @@ static void		initialize_decimal_part(t_bigfloat *bf, t_extended ext)
 	}
 }
 
-static void		initialize_bigfloat(t_bigfloat *bf, t_extended ext)
+static void	initialize_bigfloat(t_bigfloat *bf, t_extended ext)
 {
 	int			i;
 	t_bigint	five;
 
-	bf->exponent = ext.s_.exponent - EXPONENT_SHIFT;
+	bf->exponent = (int)ext.s_.exponent - EXPONENT_SHIFT;
 	initialize_decimal_part(bf, ext);
 	if (bf->exponent < 0)
 	{
 		bigint_power_of_five(&five, -(bf->exponent));
 		bf->fractional = five;
 	}
-	i = (bf->exponent < 0 ? 62 : 62 - bf->exponent);
+	if (bf->exponent < 0)
+		i = 62;
+	else
+		i = 62 - bf->exponent;
 	while (i >= 0)
 	{
 		bigint_mul_ull(&(bf->fractional), 10ULL);
@@ -68,7 +59,7 @@ static void		initialize_bigfloat(t_bigfloat *bf, t_extended ext)
 	}
 }
 
-static bool		is_special(t_extended ext, t_fields *fields, char *result)
+static bool	is_special(t_extended ext, t_fields *fields, char *result)
 {
 	if (ext.value != ext.value)
 		ft_strcat(result, "nan");
@@ -76,9 +67,9 @@ static bool		is_special(t_extended ext, t_fields *fields, char *result)
 		ft_strcat(result, "inf");
 	else if (ext.value == -1.0 / 0.0)
 		ft_strcat(result, "-inf");
-	else if (ext.s_.exponent == 0 && ext.s_.mantissa == 0)
+	else if (ext.s_.exponent == 0U && ext.s_.mantissa == 0)
 	{
-		if (ext.s_.sign == 0)
+		if (ext.s_.sign == 0U)
 			ft_strcat(result, "0");
 		else
 			ft_strcat(result, "-0");
@@ -95,12 +86,12 @@ static bool		is_special(t_extended ext, t_fields *fields, char *result)
 	return (true);
 }
 
-void			print_bigfloat(t_bigfloat *bf, t_fields *fields, char *result)
+void	print_bigfloat(t_bigfloat *bf, t_fields *fields, char *result)
 {
-	int			precision;
-	unsigned	i;
-	t_string	decimal;
-	t_string	fractional;
+	int				precision;
+	unsigned int	i;
+	t_string		decimal;
+	t_string		fractional;
 
 	ft_memset(&decimal, 0, sizeof(decimal));
 	ft_memset(&fractional, 0, sizeof(fractional));
@@ -111,7 +102,7 @@ void			print_bigfloat(t_bigfloat *bf, t_fields *fields, char *result)
 		i = round_fractional(&decimal, &fractional, fields);
 	if (i >= 0 && precision > 0)
 	{
-		moar_precision(&(bf->fractional), &fractional, &precision, i);
+		moar_precision(&(bf->fractional), &fractional, &precision, (int)i);
 		round_fractional(&decimal, &fractional, fields);
 	}
 	else
@@ -121,17 +112,16 @@ void			print_bigfloat(t_bigfloat *bf, t_fields *fields, char *result)
 	print_float(&decimal, &fractional, fields, result);
 }
 
-char			*handle_float(t_fields *fields, va_list ap)
+char	*handle_float(t_fields *fields, va_list ap)
 {
 	char		*result;
 	t_extended	ext;
 	t_bigfloat	bf;
 
-	if (!(result =
-		ft_strnew(fields->precision + BIGINT_MAX_BLOCKS * BIGINT_BLOCK_SIZE)))
-		return (NULL);
+	result
+		= ft_strnew(fields->precision + BIGINT_MAX_BLOCKS * BIGINT_BLOCK_SIZE);
 	result[0] = '\0';
-	ext.value = get_float(ap, fields->length);
+	ext.value = get_float(ap, (int)fields->length);
 	ft_memset(&bf, 0, sizeof(bf));
 	bf.decimal.size = 1;
 	bf.fractional.size = 1;
@@ -140,7 +130,7 @@ char			*handle_float(t_fields *fields, va_list ap)
 		initialize_bigfloat(&bf, ext);
 		if (bf.sign != 0)
 			ft_strcat(result, "-");
-		print_bigfloat(&bf, fields, result + (bf.sign != 0 ? 1 : 0));
+		print_bigfloat(&bf, fields, result + (bf.sign != 0));
 	}
 	return (result);
 }

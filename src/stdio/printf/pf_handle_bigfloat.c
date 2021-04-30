@@ -1,24 +1,12 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   pf_handle_bigfloat.c                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 10:53:30 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/27 10:53:31 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "ft_string.h"
 
 #include "pf_bigint.h"
 #include "pf_handle_bigfloat.h"
 #include "pf_handle_placeholder.h"
 #include "pf_utils.h"
 
-#include "ft_string.h"
-
-static void		print_block(t_bigint *bi, t_string *fractional,
-								int *precision, int i)
+static void	print_block(t_bigint *bi, t_string *fractional,
+						int *precision, int i)
 {
 	unsigned int	base;
 	int				k;
@@ -116,7 +104,7 @@ void			print_decimal_part(t_bigfloat *bf, t_string *decimal)
 void			print_float(t_string *decimal, t_string *fractional,
 							t_fields *fields, char *result)
 {
-	unsigned	len;
+	unsigned int	len;
 
 	if (fractional->len == 1 && (fields->flags & FLAG_HASH) == 0)
 		fractional->len = 0;

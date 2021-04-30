@@ -1,21 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   pf_read_fields.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 10:57:27 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/27 10:57:30 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "pf_handle_placeholder.h"
-#include "pf_utils.h"
-
 #include "ft_ctype.h"
 #include "ft_stdlib.h"
 #include "ft_string.h"
+
+#include "pf_handle_placeholder.h"
+#include "pf_utils.h"
 
 void	read_flags(const char **format, t_fields *fields)
 {
@@ -83,7 +71,7 @@ void	read_length(const char **format, t_fields *fields)
 	while (i < LENGTH_MODIFIERS_SIZE)
 	{
 		ptr = ft_strnstr(*format, length_modifiers[i],
-						ft_strlen(length_modifiers[i]));
+				ft_strlen(length_modifiers[i]));
 		if (ptr)
 		{
 			fields->length = (1U << i);

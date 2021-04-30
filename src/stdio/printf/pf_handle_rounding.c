@@ -1,23 +1,11 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   pf_handle_rounding.c                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 10:56:23 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/27 10:56:24 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "ft_string.h"
 
 #include "pf_bigint.h"
 #include "pf_handle_bigfloat.h"
 #include "pf_handle_placeholder.h"
 #include "pf_utils.h"
 
-#include "ft_string.h"
-
-static void		digit_plus_plus(t_string *string, unsigned len, int *more)
+static void	digit_plus_plus(t_string *string, unsigned int len, int *more)
 {
 	*more = 0;
 	if (string->str[len - 1] == '9')
@@ -29,9 +17,9 @@ static void		digit_plus_plus(t_string *string, unsigned len, int *more)
 		++(string->str[len - 1]);
 }
 
-static void		round_decimal(t_string *decimal, char digit, int *more)
+static void	round_decimal(t_string *decimal, char digit, int *more)
 {
-	unsigned	len;
+	unsigned int	len;
 
 	len = decimal->len;
 	if (digit - '0' > 5)
@@ -54,12 +42,11 @@ static void		round_decimal(t_string *decimal, char digit, int *more)
 	}
 }
 
-int				round_fractional(t_string *decimal, t_string *fractional,
-						t_fields *fields)
+int	round_fractional(t_string *decimal, t_string *fractional, t_fields *fields)
 {
-	unsigned	len;
-	int			more;
-	char		digit;
+	unsigned int	len;
+	int				more;
+	char			digit;
 
 	len = fractional->len - 1;
 	more = 0;
@@ -78,14 +65,14 @@ int				round_fractional(t_string *decimal, t_string *fractional,
 	return (more);
 }
 
-int				count_leading_zeros(t_bigfloat *bf)
+int	count_leading_zeros(t_bigfloat *bf)
 {
 	int		len;
 
 	if (bf->fractional.size == 0)
 		return (0);
-	len =
-		get_length_unsigned(bf->fractional.blocks[bf->fractional.size - 1], 10);
-	return (63 - bf->exponent -
-			BIGINT_BLOCK_SIZE * (int)(bf->fractional.size - 1) - len);
+	len = (int)get_length_unsigned(
+			bf->fractional.blocks[bf->fractional.size - 1], 10);
+	return (63 - bf->exponent
+		- BIGINT_BLOCK_SIZE * (int)(bf->fractional.size - 1) - len);
 }
