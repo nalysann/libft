@@ -1,18 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 10:48:09 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/27 10:48:11 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include <stddef.h>
 
 #include "ft_string.h"
-
-#include <stddef.h>
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {

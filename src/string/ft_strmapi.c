@@ -1,19 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 10:49:15 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/27 10:49:17 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "ft_string.h"
-
 #include <stddef.h>
-#include <stdlib.h>
+
+#include "ft_stdlib.h"
+#include "ft_string.h"
 
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {
@@ -22,9 +10,7 @@ char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 	size_t	i;
 
 	len = ft_strlen(s);
-	new = (char *)malloc(len + 1);
-	if (new == NULL)
-		return (NULL);
+	new = (char *)xmalloc(len + 1);
 	i = 0;
 	while (i < len)
 	{
