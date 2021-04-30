@@ -1,35 +1,21 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strtol.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 10:51:49 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/27 10:51:51 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include <errno.h>
+#include <limits.h>
 
 #include "ft_ctype.h"
 #include "in_strtol.h"
 
-#include <errno.h>
-#include <limits.h>
-#include <stddef.h>
-
 static void	skip(t_strtol *s)
 {
 	while (ft_isspace(s->c))
-	{
 		s->c = *(s->str)++;
-	}
-	s->sign = (s->c == '-' ? -1 : 1);
+	if (s->c == '-')
+		s->sign = -1;
+	else
+		s->sign = 1;
 	if (s->c == '+' || s->c == '-')
-	{
 		s->c = *(s->str)++;
-	}
-	if ((s->base == 0 || s->base == 16) && s->c == '0' &&
-		(*(s->str) == 'x' || *(s->str) == 'X'))
+	if ((s->base == 0 || s->base == 16) && s->c == '0'
+		&& (*(s->str) == 'x' || *(s->str) == 'X'))
 	{
 		s->c = s->str[1];
 		s->str += 2;
@@ -37,7 +23,10 @@ static void	skip(t_strtol *s)
 	}
 	if (s->base == 0)
 	{
-		s->base = (s->c == '0' ? 8 : 10);
+		if (s->c == '0')
+			s->base = 8;
+		else
+			s->base = 10;
 	}
 }
 
@@ -48,16 +37,19 @@ static void	convert_main(t_strtol *s, unsigned long cutoff, int cutlim)
 		if (ft_isdigit(s->c))
 			s->c -= '0';
 		else if (ft_isalpha(s->c))
-			s->c -= (ft_isupper(s->c) ? 'A' - 10 : 'a' - 10);
+		{
+			if (ft_isupper(s->c))
+				s->c -= 'A' - 10;
+			else
+				s->c -= 'a' - 10;
+		}
 		else
 			break ;
 		if (s->c >= s->base)
 			break ;
-		if (s->any < 0 ||
-			s->res > cutoff || (s->res == cutoff && s->c > cutlim))
-		{
+		if (s->any < 0 || s->res > cutoff
+			|| (s->res == cutoff && s->c > cutlim))
 			s->any = -1;
-		}
 		else
 		{
 			s->any = 1;
@@ -72,12 +64,43 @@ static void	convert(t_strtol *s)
 	unsigned long	cutoff;
 	int				cutlim;
 
-	cutoff = (s->sign < 0 ? -(LONG_MIN / s->base) : LONG_MAX / s->base);
-	cutlim = (s->sign < 0 ? -(LONG_MIN % s->base) : LONG_MAX % s->base);
+	if (s->sign < 0)
+	{
+		cutoff = -(LONG_MIN / s->base);
+		cutlim = -(LONG_MIN % s->base);
+	}
+	else
+	{
+		cutoff = LONG_MAX / s->base;
+		cutlim = LONG_MAX % s->base;
+	}
 	convert_main(s, cutoff, cutlim);
 }
 
-long		ft_strtol(const char *str, char **endptr, int base)
+static long	get_return_value(t_strtol *s, const char *str, char **endptr)
+{
+	if (endptr)
+	{
+		if (s->any)
+			*endptr = (char *)(s->str - 1);
+		else
+			*endptr = (char *)str;
+	}
+	if (s->any < 0)
+	{
+		errno = ERANGE;
+		if (s->sign < 0)
+			return (LONG_MIN);
+		else
+			return (LONG_MAX);
+	}
+	if (s->sign < 0)
+		return ((long)(-s->res));
+	else
+		return ((long)(s->res));
+}
+
+long	ft_strtol(const char *str, char **endptr, int base)
 {
 	t_strtol	s;
 
@@ -93,12 +116,5 @@ long		ft_strtol(const char *str, char **endptr, int base)
 	}
 	skip(&s);
 	convert(&s);
-	if (endptr != NULL)
-		*endptr = (char *)(s.any != 0 ? s.str - 1 : str);
-	if (s.any < 0)
-	{
-		errno = ERANGE;
-		return (s.sign < 0 ? LONG_MIN : LONG_MAX);
-	}
-	return ((long)(s.sign < 0 ? -s.res : s.res));
+	return (get_return_value(&s, str, endptr));
 }

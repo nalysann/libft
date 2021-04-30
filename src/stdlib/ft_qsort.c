@@ -1,20 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_qsort.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/13 10:47:24 by nalysann          #+#    #+#             */
-/*   Updated: 2021/03/13 10:47:26 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include <stddef.h>
 
 #include "ft_stdlib.h"
 
-#include <stddef.h>
-
-static void		*hoare(void *left, void *right, size_t size,
+static void	*hoare(void *left, void *right, size_t size,
 				int (*cmp)(const void *, const void *))
 {
 	void	*pivot;
@@ -38,7 +26,7 @@ static void		*hoare(void *left, void *right, size_t size,
 	}
 }
 
-static void		quicksort(void *left, void *right, size_t size,
+static void	quicksort(void *left, void *right, size_t size,
 				int (*cmp)(const void *, const void *))
 {
 	void	*pivot;
@@ -51,7 +39,7 @@ static void		quicksort(void *left, void *right, size_t size,
 	}
 }
 
-void			ft_qsort(void *data, size_t len, size_t size,
+void	ft_qsort(void *data, size_t len, size_t size,
 				int (*cmp)(const void *, const void *))
 {
 	void	*left;

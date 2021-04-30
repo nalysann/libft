@@ -3,7 +3,7 @@
 
 # include <stddef.h>
 
-void		free_split(char **split, size_t idx);
+void		free_split(char **split);
 int			ft_abs(int i);
 int			ft_atoi(const char *str);
 long		ft_atol(const char *str);
@@ -21,5 +21,7 @@ char		*ft_strnew(size_t size);
 long		ft_strtol(const char *str, char **endptr, int base);
 long long	ft_strtoll(const char *str, char **endptr, int base);
 void		ft_swap(void *a, void *b, size_t size);
+void		*xcalloc(size_t count, size_t size);
+void		*xmalloc(size_t size);
 
 #endif

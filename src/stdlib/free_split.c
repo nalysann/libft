@@ -1,21 +1,12 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   free_split.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/10 16:42:13 by nalysann          #+#    #+#             */
-/*   Updated: 2020/09/10 16:42:14 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <stddef.h>
 #include <stdlib.h>
 
-void	free_split(char **split, size_t idx)
+void	free_split(char **split)
 {
-	while (split[idx] != NULL)
-		free(split[idx++]);
+	size_t	i;
+
+	i = 0;
+	while (split[i])
+		free(split[i++]);
 	free(split);
 }
