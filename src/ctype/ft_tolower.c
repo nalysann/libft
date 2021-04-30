@@ -1,18 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 10:52:27 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/27 10:52:28 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ft_ctype.h"
 
-int		ft_tolower(int c)
+int	ft_tolower(int c)
 {
-	return (ft_isupper(c) ? (c - 'A' + 'a') : c);
+	if (ft_isupper(c))
+		return (c - 'A' + 'a');
+	else
+		return (c);
 }
