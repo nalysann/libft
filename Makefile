@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/08/27 10:26:30 by nalysann          #+#    #+#              #
-#    Updated: 2020/09/10 16:38:36 by nalysann         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 LIB := libft.a
 
 # **************************************************************************** #
@@ -25,7 +13,7 @@ COMPLEX_SRC := complex_abs.c \
                complex_div.c \
                complex_init.c \
                complex_mul.c \
-               complex_sub.c \
+               complex_sub.c
 
 COMPLEX_SRC := $(addprefix $(COMPLEX_DIR)/, $(COMPLEX_SRC))
 COMPLEX_OBJ := $(COMPLEX_SRC:.c=.o)
@@ -50,7 +38,7 @@ CTYPE_SRC := ft_digittoint.c \
              ft_isupper.c \
              ft_isxdigit.c \
              ft_tolower.c \
-             ft_toupper.c \
+             ft_toupper.c
 
 CTYPE_SRC := $(addprefix $(CTYPE_DIR)/, $(CTYPE_SRC))
 CTYPE_OBJ := $(CTYPE_SRC:.c=.o)
@@ -65,7 +53,7 @@ LIST_SRC := list_free.c \
             list_pop_back.c \
             list_pop_front.c \
             list_push_back.c \
-            list_push_front.c \
+            list_push_front.c
 
 LIST_SRC := $(addprefix $(LIST_DIR)/, $(LIST_SRC))
 LIST_OBJ := $(LIST_SRC:.c=.o)
@@ -89,7 +77,7 @@ MATH_SRC := ft_fabs.c \
             ft_lmax.c \
             ft_lmin.c \
             ft_max.c \
-            ft_min.c \
+            ft_min.c
 
 MATH_SRC := $(addprefix $(MATH_DIR)/, $(MATH_SRC))
 MATH_OBJ := $(MATH_SRC:.c=.o)
@@ -123,7 +111,7 @@ PRINTF_SRC := ft_printf.c \
               pf_print_placeholder.c \
               pf_read_fields.c \
               pf_utils_1.c \
-              pf_utils_2.c \
+              pf_utils_2.c
 
 PRINTF_SRC := $(addprefix $(PRINTF_DIR)/, $(PRINTF_SRC))
 
@@ -137,7 +125,7 @@ STDIO_SRC := ft_error.c \
              ft_putstr.c \
              ft_putstr_fd.c \
              get_next_line.c \
-             $(PRINTF_SRC) \
+             $(PRINTF_SRC)
 
 STDIO_SRC := $(addprefix $(STDIO_DIR)/, $(STDIO_SRC))
 STDIO_OBJ := $(STDIO_SRC:.c=.o)
@@ -164,6 +152,8 @@ STDLIB_SRC := free_split.c \
               ft_strtol.c \
               ft_strtoll.c \
               ft_swap.c \
+              xcalloc.c \
+              xmalloc.c
 
 STDLIB_SRC := $(addprefix $(STDLIB_DIR)/, $(STDLIB_SRC))
 STDLIB_OBJ := $(STDLIB_SRC:.c=.o)
@@ -219,7 +209,7 @@ STRING_SRC := ft_bzero.c \
               ft_strstr.c \
               ft_strsub.c \
               ft_strtrim.c \
-              ft_strupper.c \
+              ft_strupper.c
 
 STRING_SRC := $(addprefix $(STRING_DIR)/, $(STRING_SRC))
 STRING_OBJ := $(STRING_SRC:.c=.o)
@@ -236,7 +226,7 @@ VECTOR_SRC := vector_free.c \
               vector_push_back.c \
               vector_resize.c \
               vector_set.c \
-              vector_sort.c \
+              vector_sort.c
 
 VECTOR_SRC := $(addprefix $(VECTOR_DIR)/, $(VECTOR_SRC))
 VECTOR_OBJ := $(VECTOR_SRC:.c=.o)
@@ -246,7 +236,7 @@ VECTOR_DEP := $(VECTOR_SRC:.c=.d)
 
 INC_DIRS := include \
             include/internal \
-            include/internal/printf \
+            include/internal/printf
 
 # **************************************************************************** #
 
@@ -259,8 +249,7 @@ OBJ := $(addprefix $(OBJ_DIR)/, $(COMPLEX_OBJ) \
                                 $(STDIO_OBJ) \
                                 $(STDLIB_OBJ) \
                                 $(STRING_OBJ) \
-                                $(VECTOR_OBJ) \
-                                )
+                                $(VECTOR_OBJ))
 
 DEP := $(addprefix $(OBJ_DIR)/, $(COMPLEX_DEP) \
                                 $(CTYPE_DEP) \
@@ -269,8 +258,7 @@ DEP := $(addprefix $(OBJ_DIR)/, $(COMPLEX_DEP) \
                                 $(STDIO_DEP) \
                                 $(STDLIB_DEP) \
                                 $(STRING_DEP) \
-                                $(VECTOR_DEP) \
-                                )
+                                $(VECTOR_DEP))
 
 # **************************************************************************** #
 

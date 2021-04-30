@@ -159,7 +159,9 @@ SET(STDLIB_SRC
         src/stdlib/ft_strnew.c
         src/stdlib/ft_strtol.c
         src/stdlib/ft_strtoll.c
-        src/stdlib/ft_swap.c)
+        src/stdlib/ft_swap.c
+        src/stdlib/xcalloc.c
+        src/stdlib/xmalloc.c)
 
 SET(STRING_SRC
         src/string/ft_bzero.c
