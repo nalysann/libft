@@ -1,67 +1,72 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/27 10:52:48 by nalysann          #+#    #+#             */
-/*   Updated: 2020/08/27 10:52:50 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include <stddef.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 #include "ft_stdlib.h"
 #include "ft_string.h"
 #include "in_get_next_line.h"
 
-#include <stddef.h>
-#include <unistd.h>
-
-static char		*process_buffer(char **buffer, char *endl)
+static char	*process_buffer(char **buffer, char *endl)
 {
 	char	*str;
 	char	*tmp;
 
-	str = (endl == NULL ? *buffer : ft_strndup(*buffer, endl - *buffer));
-	if (endl != NULL && str == NULL)
+	if (endl)
 	{
-		return (NULL);
+		str = ft_strndup(*buffer, endl - *buffer);
+		tmp = *buffer;
+		*buffer = ft_strdup(endl + 1);
 	}
-	tmp = (endl == NULL ? NULL : *buffer);
-	*buffer = (endl == NULL ? NULL : ft_strdup(endl + 1));
-	if (endl != NULL && *buffer == NULL)
+	else
 	{
-		return (NULL);
+		str = *buffer;
+		tmp = NULL;
+		*buffer = NULL;
 	}
-	ft_strdel(&tmp);
+	free(tmp);
 	return (str);
 }
 
-int				get_next_line(int fd, char **line)
+static void	gnl_internal(int fd, char **buffers, ssize_t *ret, char **endl)
 {
-	static char		*buffers[FD_MAX];
-	char			buf[BUF_SIZE + 1];
-	ssize_t			ret;
-	char			*endl;
-	char			*tmp;
+	char	buf[GNL_BUF_SIZE + 1];
+	char	*tmp;
 
 	if (buffers[fd] == NULL)
 		buffers[fd] = ft_strnew(0);
-	if (buffers[fd] == NULL)
-		return (-1);
-	endl = ft_strchr(buffers[fd], '\n');
-	while (endl == NULL && (ret = read(fd, buf, BUF_SIZE)) > 0)
+	*endl = ft_strchr(buffers[fd], '\n');
+	*ret = read(fd, buf, GNL_BUF_SIZE);
+	while (*endl == NULL && ret > 0)
 	{
-		buf[ret] = '\0';
+		buf[*ret] = '\0';
 		tmp = buffers[fd];
-		if (!(buffers[fd] = ft_strjoin(tmp, buf)))
-			return (-1);
-		ft_strdel(&tmp);
-		if (ft_strchr(buf, '\n') && (endl = ft_strchr(buffers[fd], '\n')))
-			break ;
+		buffers[fd] = ft_strjoin(tmp, buf);
+		free(tmp);
+		if (ft_strchr(buf, '\n'))
+		{
+			*endl = ft_strchr(buffers[fd], '\n');
+			if (*endl)
+				break ;
+		}
+		*ret = read(fd, buf, GNL_BUF_SIZE);
 	}
-	*line = (*buffers[fd] != '\0' ? process_buffer(&buffers[fd], endl) : NULL);
+}
+
+int	get_next_line(int fd, char **line)
+{
+	static char		*buffers[GNL_FD_MAX];
+	ssize_t			ret;
+	char			*endl;
+
+	gnl_internal(fd, buffers, &endl);
+	if (*buffers[fd])
+		*line = process_buffer(&buffers[fd], endl);
+	else
+		*line = NULL;
 	if (*line == NULL)
-		ft_strdel(&buffers[fd]);
-	return (*line == NULL ? (int)ret : 1);
+		free(buffers[fd]);
+	if (*line)
+		return (1);
+	else
+		return ((int)ret);
 }
