@@ -4,9 +4,12 @@
 # include <stddef.h>
 # include <stdint.h>
 
+# define EMPTY_VECTOR_POP_MSG "Pop from the empty vector"
+# define VECTOR_INVALID_INDEX_MSG "Vector index out of range"
+# define E_VECTOR_ERROR 21
+
 # define VECTOR_INIT_CAPACITY 8
-# define VECTOR_BAD_CAPACITY SIZE_MAX
-# define VECTOR_GROWTH_SCALE 2
+# define VECTOR_GROWTH_RATE 2
 
 struct s_vector
 {
@@ -16,17 +19,6 @@ struct s_vector
 };
 
 typedef struct s_vector		t_vector;
-
-/*
-** vector_get returns NULL for indices out of range
-** vector_on_heap returns NULL on memory allocation failure
-** vector_on_stack and vector_on_heap return vector with capacity
-**     set to VECTOR_BAD_CAPACITY on underlying array allocation failure
-** vector_pop_back returns NULL for empty vectors
-** vector_push_back and vector_resize set capacity to
-**     VECTOR_BAD_CAPACITY on resize failure
-** vector_set does nothing for indices out of range
-*/
 
 void		vector_free(t_vector *vector);
 void		vector_free_deep(t_vector *vector, void (*f)(void *));

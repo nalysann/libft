@@ -1,19 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   vector_push_back.c                                 :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/01 17:06:24 by nalysann          #+#    #+#             */
-/*   Updated: 2020/09/01 17:06:25 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include <stdlib.h>
 
+#include "ft_stdlib.h"
 #include "ft_string.h"
 #include "ft_vector.h"
-
-#include <stdlib.h>
 
 void	vector_push_back(t_vector *vector, void *item)
 {
@@ -22,13 +11,8 @@ void	vector_push_back(t_vector *vector, void *item)
 
 	if (vector->size == vector->capacity)
 	{
-		new_capacity = vector->capacity * VECTOR_GROWTH_SCALE;
-		data_ = (void **)malloc(sizeof(void *) * new_capacity);
-		if (data_ == NULL)
-		{
-			vector->capacity = VECTOR_BAD_CAPACITY;
-			return ;
-		}
+		new_capacity = vector->capacity * VECTOR_GROWTH_RATE;
+		data_ = (void **)xmalloc(sizeof(void *) * new_capacity);
 		ft_memmove(data_, vector->data, sizeof(void *) * vector->capacity);
 		free(vector->data);
 		vector->data = data_;
