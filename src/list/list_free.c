@@ -1,19 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   list_free.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/01 18:52:31 by nalysann          #+#    #+#             */
-/*   Updated: 2020/09/01 18:52:34 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "ft_list.h"
-
 #include <stddef.h>
 #include <stdlib.h>
+
+#include "ft_list.h"
 
 void	list_free(t_list *list)
 {
@@ -21,7 +9,7 @@ void	list_free(t_list *list)
 	t_node	*tmp;
 
 	node = list->front;
-	while (node != NULL)
+	while (node)
 	{
 		tmp = node;
 		node = node->next;
@@ -38,7 +26,7 @@ void	list_free_deep(t_list *list, void (*f)(void *))
 	t_node	*tmp;
 
 	node = list->front;
-	while (node != NULL)
+	while (node)
 	{
 		tmp = node;
 		node = node->next;

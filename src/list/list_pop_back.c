@@ -1,19 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   list_pop_back.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/01 18:11:20 by nalysann          #+#    #+#             */
-/*   Updated: 2020/09/01 18:11:21 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "ft_list.h"
-
 #include <stddef.h>
 #include <stdlib.h>
+
+#include "ft_list.h"
+#include "ft_stdio.h"
 
 void	*list_pop_back(t_list *list)
 {
@@ -21,7 +10,7 @@ void	*list_pop_back(t_list *list)
 	void	*data;
 
 	if (list->size == 0)
-		return (NULL);
+		ft_error(EMPTY_LIST_POP_MSG, E_LIST_ERROR);
 	if (list->front == list->back)
 		list->front = NULL;
 	else if (list->front->next == list->back)

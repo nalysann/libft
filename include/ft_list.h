@@ -3,6 +3,9 @@
 
 # include <stddef.h>
 
+# define EMPTY_LIST_POP_MSG "Pop from the empty list"
+# define E_LIST_ERROR 21
+
 struct s_node
 {
 	void			*data;
@@ -20,12 +23,6 @@ struct s_list
 };
 
 typedef struct s_list	t_list;
-
-/*
-** list_on_heap returns NULL on memory allocation failure
-** list_pop_back and list_pop_front return NULL for empty lists
-** list_push_back and list_push_front do nothing on node allocation failure
-*/
 
 void	list_free(t_list *list);
 void	list_free_deep(t_list *list, void (*f)(void *));
