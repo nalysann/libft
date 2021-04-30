@@ -9,10 +9,6 @@ struct s_complex
 
 typedef struct s_complex	t_complex;
 
-/*
-** complex_on_heap returns NULL on memory allocation failure
-*/
-
 t_complex	complex_on_stack(double re, double im);
 t_complex	*complex_on_heap(double re, double im);
 void		complex_set(t_complex *this, double re, double im);
