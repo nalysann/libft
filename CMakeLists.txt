@@ -219,6 +219,7 @@ SET(VECTOR_SRC
         src/vector/vector_pop_back.c
         src/vector/vector_push_back.c
         src/vector/vector_resize.c
+        src/vector/vector_reverse.c
         src/vector/vector_set.c
         src/vector/vector_sort.c)
 

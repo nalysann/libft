@@ -225,6 +225,7 @@ VECTOR_SRC := vector_free.c \
               vector_pop_back.c \
               vector_push_back.c \
               vector_resize.c \
+              vector_reverse.c \
               vector_set.c \
               vector_sort.c
 
