@@ -58,7 +58,7 @@ int	get_next_line(int fd, char **line)
 	ssize_t			ret;
 	char			*endl;
 
-	gnl_internal(fd, buffers, &endl);
+	gnl_internal(fd, buffers, &ret, &endl);
 	if (*buffers[fd])
 		*line = process_buffer(&buffers[fd], endl);
 	else

@@ -11,5 +11,6 @@ void	itoa_base_signed(long long nbr, char *base, char *result);
 size_t	get_length_unsigned(unsigned long long nbr, unsigned long long base);
 void	itoa_base_unsigned(unsigned long long nbr, char *base, char *result);
 void	ulltoa(unsigned long long value, t_string *string);
+void	print_block_helper(t_bigint *bi, int i, unsigned int *base, int *k);
 
 #endif

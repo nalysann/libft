@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+#include "ft_math.h"
 #include "ft_string.h"
 
 #include "pf_buffer.h"
@@ -57,6 +58,20 @@ static char	*handle_prefix(t_fields *fields, char *result)
 	return ("");
 }
 
+static void	print_helper(t_fields *fields, int len, int *i, t_buffer *buf)
+{
+	if (fields->width > len && (fields->flags & FLAG_MINUS) == 0)
+	{
+		while ((*i)++ < fields->width - len)
+		{
+			if (fields->flags & FLAG_ZERO)
+				add_to_buffer(buf, "0", 1);
+			else
+				add_to_buffer(buf, " ", 1);
+		}
+	}
+}
+
 static int	print_result(t_fields *fields, char *result, t_buffer *buf)
 {
 	char	*prefix;
@@ -65,14 +80,12 @@ static int	print_result(t_fields *fields, char *result, t_buffer *buf)
 
 	prefix = handle_prefix(fields, result);
 	len = (int)ft_strlen(prefix) + (int)ft_strlen(result);
+	i = 0;
 	if (fields->type == 'c' && !*result)
 		++len;
 	if (ft_strlen(prefix) != 0 && (fields->flags & FLAG_ZERO) != 0)
 		add_to_buffer(buf, prefix, ft_strlen(prefix));
-	i = 0;
-	if (fields->width > len && (fields->flags & FLAG_MINUS) == 0)
-		while (i++ < fields->width - len)
-			add_to_buffer(buf, (fields->flags & FLAG_ZERO) ? "0" : " ", 1);
+	print_helper(fields, len, &i, buf);
 	if (ft_strlen(prefix) != 0 && (fields->flags & FLAG_ZERO) == 0)
 		add_to_buffer(buf, prefix, ft_strlen(prefix));
 	if (fields->type == 'c' && !*result)
@@ -81,7 +94,7 @@ static int	print_result(t_fields *fields, char *result, t_buffer *buf)
 	if (fields->width > len && (fields->flags & FLAG_MINUS) != 0)
 		while (i++ < fields->width - len)
 			add_to_buffer(buf, " ", 1);
-	return ((fields->width > len) ? fields->width : len);
+	return (ft_max(fields->width, len));
 }
 
 int	print_placeholder(t_fields *fields, va_list ap, t_buffer *buf)
