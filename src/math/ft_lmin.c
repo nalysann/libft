@@ -1,19 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_lmin.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/25 13:48:22 by nalysann          #+#    #+#             */
-/*   Updated: 2021/08/25 13:48:22 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "ft_math.h"
 
-long	ft_lmin(long i, long j)
+long ft_lmin(long i, long j)
 {
-	if (i < j)
-		return (i);
-	else
-		return (j);
+    if (i < j) {
+        return i;
+    }
+    return j;
 }
