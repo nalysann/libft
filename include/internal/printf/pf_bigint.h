@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pf_bigint.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/25 13:38:36 by nalysann          #+#    #+#             */
+/*   Updated: 2021/08/25 13:38:42 by nalysann         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PF_BIGINT_H
 # define PF_BIGINT_H
 
@@ -17,7 +29,7 @@ typedef struct s_bigint		t_bigint;
 
 struct s_string
 {
-	char			str[BIGINT_MAX_BLOCKS*BIGINT_BLOCK_SIZE];
+	char			str[BIGINT_MAX_BLOCKS * BIGINT_BLOCK_SIZE];
 	unsigned int	len;
 };
 

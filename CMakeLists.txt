@@ -6,7 +6,7 @@
 #    By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/06 14:47:35 by nalysann          #+#    #+#              #
-#    Updated: 2021/03/06 14:47:36 by nalysann         ###   ########.fr        #
+#    Updated: 2021/08/25 13:34:41 by nalysann         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ cmake_minimum_required(VERSION 3.17)
 project(libft C)
 
 set(CMAKE_C_STANDARD 11)
-set(CMAKE_C_FLAGS "-Wall -Wextra -Werror -O2 -march=native -ftree-vectorize -pipe")
 
 include_directories(include)
 include_directories(include/internal)
