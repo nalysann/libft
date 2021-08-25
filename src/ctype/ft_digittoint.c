@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_ctype.h"
+
 int	ft_digittoint(int c)
 {
 	if ('0' <= c && c <= '9')
@@ -18,6 +20,5 @@ int	ft_digittoint(int c)
 		return (10 + c - 'A');
 	else if ('a' <= c && c <= 'f')
 		return (10 + c - 'a');
-	else
-		return (0);
+	return (0);
 }

@@ -16,7 +16,7 @@
 # include <stddef.h>
 
 # define EMPTY_LIST_POP_MSG "Pop from the empty list"
-# define E_LIST_ERROR 21
+# define E_LIST_ERROR 1
 
 struct s_node
 {
