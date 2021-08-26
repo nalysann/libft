@@ -1,28 +1,16 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_intlen.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/25 13:52:34 by nalysann          #+#    #+#             */
-/*   Updated: 2021/08/25 13:52:34 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <stddef.h>
 
-size_t	ft_intlen(int n)
-{
-	size_t	len;
+#include "ft_stdlib.h"
 
-	len = 1;
-	if (n < 0)
-		++len;
-	while (n / 10)
-	{
-		n /= 10;
-		++len;
-	}
-	return (len);
+size_t ft_intlen(int n)
+{
+    size_t len = 1;
+    if (n < 0) {
+        ++len;
+    }
+    while (n / 10) {
+        n /= 10;
+        ++len;
+    }
+    return len;
 }

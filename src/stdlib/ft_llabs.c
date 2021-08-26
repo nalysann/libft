@@ -1,19 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_llabs.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/25 13:52:47 by nalysann          #+#    #+#             */
-/*   Updated: 2021/08/25 13:52:47 by nalysann         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "ft_stdlib.h"
 
-long long	ft_llabs(long long i)
+long long ft_llabs(long long i)
 {
-	if (i < 0)
-		return (-i);
-	else
-		return (i);
+    if (i < 0) {
+        return -i;
+    }
+    return i;
 }
