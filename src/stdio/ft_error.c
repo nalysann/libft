@@ -11,18 +11,32 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <unistd.h>
 
 #include "ft_stdio.h"
-#include "in_error.h"
 
-void	ft_error(const char *error_message, int error_code)
+static const char	g_reset[] = "\033[0;0m";
+static const char	g_red[] = "\033[1;31m";
+
+void	ft_error(const char *msg, int code)
 {
-	if (error_message)
+	if (msg)
 	{
-		ft_putstr_fd(RED, STDERR_FILENO);
-		ft_putstr_fd(error_message, STDERR_FILENO);
-		ft_putendl_fd(RESET, STDERR_FILENO);
+		write(STDERR_FILENO, g_red, sizeof(g_red) - 1);
+		ft_putendl_fd(msg, STDERR_FILENO);
+		write(STDERR_FILENO, g_reset, sizeof(g_reset) - 1);
 	}
-	exit(error_code);
+	exit(code);
+}
+
+void	ft_perror(const char *msg, int code)
+{
+	if (msg)
+	{
+		write(STDERR_FILENO, g_red, sizeof(g_red) - 1);
+		perror(msg);
+		write(STDERR_FILENO, g_reset, sizeof(g_reset) - 1);
+	}
+	exit(code);
 }

@@ -30,6 +30,7 @@ int		ft_printf(const char *format, ...);
 int		ft_dprintf(int fd, const char *format, ...);
 int		ft_vdprintf(int fd, const char *format, va_list ap);
 
-void	ft_error(const char *error_message, int error_code);
+void	ft_error(const char *msg, int code);
+void	ft_perror(const char *msg, int code);
 
 #endif
