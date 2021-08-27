@@ -30,6 +30,28 @@ void	ft_error(const char *msg, int code)
 	exit(code);
 }
 
+void	ft_error2(const char *s1, const char *s2, int code)
+{
+	write(STDERR_FILENO, g_red, sizeof(g_red) - 1);
+	ft_putstr_fd(s1, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putendl_fd(s2, STDERR_FILENO);
+	write(STDERR_FILENO, g_reset, sizeof(g_reset) - 1);
+	exit(code);
+}
+
+void	ft_error3(const char *s1, const char *s2, const char *s3, int code)
+{
+	write(STDERR_FILENO, g_red, sizeof(g_red) - 1);
+	ft_putstr_fd(s1, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putstr_fd(s2, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	ft_putendl_fd(s3, STDERR_FILENO);
+	write(STDERR_FILENO, g_reset, sizeof(g_reset) - 1);
+	exit(code);
+}
+
 void	ft_perror(const char *msg, int code)
 {
 	if (msg)
