@@ -21,21 +21,18 @@ static const char	g_red[] = "\033[1;31m";
 
 void	ft_error(const char *msg, int code)
 {
-	if (msg)
-	{
-		write(STDERR_FILENO, g_red, sizeof(g_red) - 1);
-		ft_putendl_fd(msg, STDERR_FILENO);
-		write(STDERR_FILENO, g_reset, sizeof(g_reset) - 1);
-	}
+	write(STDERR_FILENO, g_red, sizeof(g_red) - 1);
+	ft_putendl_fd(msg, STDERR_FILENO);
+	write(STDERR_FILENO, g_reset, sizeof(g_reset) - 1);
 	exit(code);
 }
 
-void	ft_error2(const char *s1, const char *s2, int code)
+void	ft_error2(const char *first, const char *second, int code)
 {
 	write(STDERR_FILENO, g_red, sizeof(g_red) - 1);
-	ft_putstr_fd(s1, STDERR_FILENO);
+	ft_putstr_fd(first, STDERR_FILENO);
 	ft_putstr_fd(": ", STDERR_FILENO);
-	ft_putendl_fd(s2, STDERR_FILENO);
+	ft_putendl_fd(second, STDERR_FILENO);
 	write(STDERR_FILENO, g_reset, sizeof(g_reset) - 1);
 	exit(code);
 }
@@ -54,11 +51,18 @@ void	ft_error3(const char *s1, const char *s2, const char *s3, int code)
 
 void	ft_perror(const char *msg, int code)
 {
-	if (msg)
-	{
-		write(STDERR_FILENO, g_red, sizeof(g_red) - 1);
-		perror(msg);
-		write(STDERR_FILENO, g_reset, sizeof(g_reset) - 1);
-	}
+	write(STDERR_FILENO, g_red, sizeof(g_red) - 1);
+	perror(msg);
+	write(STDERR_FILENO, g_reset, sizeof(g_reset) - 1);
+	exit(code);
+}
+
+void	ft_perror2(const char *first, const char *second, int code)
+{
+	write(STDERR_FILENO, g_red, sizeof(g_red) - 1);
+	ft_putstr_fd(first, STDERR_FILENO);
+	ft_putstr_fd(": ", STDERR_FILENO);
+	perror(second);
+	write(STDERR_FILENO, g_reset, sizeof(g_reset) - 1);
 	exit(code);
 }

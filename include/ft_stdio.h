@@ -31,8 +31,9 @@ int		ft_dprintf(int fd, const char *format, ...);
 int		ft_vdprintf(int fd, const char *format, va_list ap);
 
 void	ft_error(const char *msg, int code);
-void	ft_error2(const char *s1, const char *s2, int code);
+void	ft_error2(const char *first, const char *second, int code);
 void	ft_error3(const char *s1, const char *s2, const char *s3, int code);
 void	ft_perror(const char *msg, int code);
+void	ft_perror2(const char *first, const char *second, int code);
 
 #endif
