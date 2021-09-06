@@ -263,17 +263,7 @@ DEP := $(addprefix $(OBJ_DIR)/, $(COMPLEX_DEP) \
 
 # **************************************************************************** #
 
-UNAME_S := $(shell uname -s)
-
-ifeq ($(UNAME_S), Darwin)
-    CC := clang
-endif
-
-ifeq ($(UNAME_S), Linux)
-    CC := gcc
-endif
-
-# **************************************************************************** #
+CC := clang
 
 CFLAGS += -Wall -Wextra -Werror \
           $(addprefix -I , $(INC_DIRS)) \
