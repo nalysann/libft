@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/25 13:51:01 by nalysann          #+#    #+#             */
-/*   Updated: 2021/08/25 13:51:01 by nalysann         ###   ########.fr       */
+/*   Created: 2021/09/13 00:50:02 by nalysann          #+#    #+#             */
+/*   Updated: 2021/09/13 00:50:05 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,54 +15,58 @@
 #include <unistd.h>
 
 #include "ft_stdio.h"
+#include "ft_string.h"
 
-static const char	g_reset[] = "\033[0;0m";
-static const char	g_red[] = "\033[1;31m";
+#include "in_error.h"
 
 void	ft_error(const char *msg, int code)
 {
-	write(STDERR_FILENO, g_red, sizeof(g_red) - 1);
-	ft_putendl_fd(msg, STDERR_FILENO);
-	write(STDERR_FILENO, g_reset, sizeof(g_reset) - 1);
+	char	error_buf[ERROR_BUF_SIZE + 1];
+
+	ft_strncat(error_buf, msg, ERROR_BUF_SIZE);
+	ft_strncat(error_buf, "\n", ERROR_BUF_SIZE);
+	error_buf[ERROR_BUF_SIZE] = '\0';
+	ft_putstr_fd(error_buf, STDERR_FILENO);
 	exit(code);
 }
 
 void	ft_error2(const char *first, const char *second, int code)
 {
-	write(STDERR_FILENO, g_red, sizeof(g_red) - 1);
-	ft_putstr_fd(first, STDERR_FILENO);
-	ft_putstr_fd(": ", STDERR_FILENO);
-	ft_putendl_fd(second, STDERR_FILENO);
-	write(STDERR_FILENO, g_reset, sizeof(g_reset) - 1);
-	exit(code);
+	char	error_buf[ERROR_BUF_SIZE + 1];
+
+	ft_strncpy(error_buf, first, ERROR_BUF_SIZE);
+	ft_strncat(error_buf, ": ", ERROR_BUF_SIZE);
+	ft_strncat(error_buf, second, ERROR_BUF_SIZE);
+	error_buf[ERROR_BUF_SIZE] = '\0';
+	ft_error(error_buf, code);
 }
 
 void	ft_error3(const char *s1, const char *s2, const char *s3, int code)
 {
-	write(STDERR_FILENO, g_red, sizeof(g_red) - 1);
-	ft_putstr_fd(s1, STDERR_FILENO);
-	ft_putstr_fd(": ", STDERR_FILENO);
-	ft_putstr_fd(s2, STDERR_FILENO);
-	ft_putstr_fd(": ", STDERR_FILENO);
-	ft_putendl_fd(s3, STDERR_FILENO);
-	write(STDERR_FILENO, g_reset, sizeof(g_reset) - 1);
-	exit(code);
+	char	error_buf[ERROR_BUF_SIZE + 1];
+
+	ft_strncpy(error_buf, s1, ERROR_BUF_SIZE);
+	ft_strncat(error_buf, ": ", ERROR_BUF_SIZE);
+	ft_strncat(error_buf, s2, ERROR_BUF_SIZE);
+	ft_strncat(error_buf, ": ", ERROR_BUF_SIZE);
+	ft_strncat(error_buf, s3, ERROR_BUF_SIZE);
+	error_buf[ERROR_BUF_SIZE] = '\0';
+	ft_error(error_buf, code);
 }
 
 void	ft_perror(const char *msg, int code)
 {
-	write(STDERR_FILENO, g_red, sizeof(g_red) - 1);
 	perror(msg);
-	write(STDERR_FILENO, g_reset, sizeof(g_reset) - 1);
 	exit(code);
 }
 
 void	ft_perror2(const char *first, const char *second, int code)
 {
-	write(STDERR_FILENO, g_red, sizeof(g_red) - 1);
-	ft_putstr_fd(first, STDERR_FILENO);
-	ft_putstr_fd(": ", STDERR_FILENO);
-	perror(second);
-	write(STDERR_FILENO, g_reset, sizeof(g_reset) - 1);
-	exit(code);
+	char	error_buf[ERROR_BUF_SIZE + 1];
+
+	ft_strncpy(error_buf, first, ERROR_BUF_SIZE);
+	ft_strncat(error_buf, ": ", ERROR_BUF_SIZE);
+	ft_strncat(error_buf, second, ERROR_BUF_SIZE);
+	error_buf[ERROR_BUF_SIZE] = '\0';
+	ft_perror(error_buf, code);
 }
