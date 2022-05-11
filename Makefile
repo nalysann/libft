@@ -42,12 +42,12 @@ CTYPE_OBJ := $(addprefix $(CTYPE_DIR)/, $(CTYPE_SRC:.c=.o))
 
 LIST_DIR := list
 
-LIST_SRC := list_delete.c \
+LIST_SRC := list_clear.c \
+            list_erase.c \
             list_init.c \
-            list_pop_back.c \
-            list_pop_front.c \
-            list_push_back.c \
-            list_push_front.c
+            list_insert.c \
+            list_pop.c \
+            list_push.c
 
 LIST_OBJ := $(addprefix $(LIST_DIR)/, $(LIST_SRC:.c=.o))
 

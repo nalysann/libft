@@ -6,32 +6,28 @@
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 13:46:50 by nalysann          #+#    #+#             */
-/*   Updated: 2021/08/25 13:46:50 by nalysann         ###   ########.fr       */
+/*   Updated: 2022/05/11 14:54:23 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_list.h"
+
 #include <stddef.h>
 
-#include "ft_list.h"
 #include "ft_stdlib.h"
 
-t_list	list_on_stack(void)
+void	list_init(t_list *list)
 {
-	t_list	list;
-
-	list.front = NULL;
-	list.back = NULL;
-	list.size = 0;
-	return (list);
+	list->size = 0;
+	list->front = NULL;
+	list->back = NULL;
 }
 
-t_list	*list_on_heap(void)
+t_list	*list_alloc(void)
 {
 	t_list	*list;
 
 	list = (t_list *)xmalloc(sizeof(t_list));
-	list->front = NULL;
-	list->back = NULL;
-	list->size = 0;
+	list_init(list);
 	return (list);
 }
