@@ -42,7 +42,7 @@ CTYPE_OBJ := $(addprefix $(CTYPE_DIR)/, $(CTYPE_SRC:.c=.o))
 
 LIST_DIR := list
 
-LIST_SRC := list_free.c \
+LIST_SRC := list_delete.c \
             list_init.c \
             list_pop_back.c \
             list_pop_front.c \
@@ -217,7 +217,6 @@ VECTOR_OBJ := $(addprefix $(VECTOR_DIR)/, $(VECTOR_SRC:.c=.o))
 
 SRC_DIR := src
 OBJ_DIR := obj
-
 INC_DIRS := include \
             include/internal \
             include/internal/printf
@@ -245,39 +244,24 @@ CFLAGS += -Wall -Wextra -Werror \
 
 # **************************************************************************** #
 
-RESET   := \033[0;0m
-RED     := \033[0;31m
-GREEN   := \033[0;32m
-YELLOW  := \033[0;33m
-BLUE    := \033[0;34m
-MAGENTA := \033[0;35m
-CYAN    := \033[0;36m
-WHITE   := \033[0;37m
-
-# **************************************************************************** #
-
 .PHONY: all clean fclean re
 
 # **************************************************************************** #
 
 all:
-	@$(MAKE) $(NAME)
+	$(MAKE) $(NAME)
 
 # **************************************************************************** #
 
 $(NAME): $(OBJ)
-	@printf "$(BLUE)"
-	ar -cr $@ $?
+	ar cr $@ $?
 	ranlib $@
-	@printf "$(RESET)"
 
 # **************************************************************************** #
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@printf "$(MAGENTA)"
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
-	@printf "$(RESET)"
 
 # **************************************************************************** #
 
@@ -286,15 +270,12 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 # **************************************************************************** #
 
 clean:
-	@printf "$(RED)"
 	rm -rf $(OBJ_DIR)
-	@printf "$(RESET)"
 
 fclean: clean
-	@printf "$(RED)"
 	rm -f $(NAME)
-	@printf "$(RESET)"
 
-re: fclean all
+re: fclean
+	$(MAKE) all
 
 # **************************************************************************** #
