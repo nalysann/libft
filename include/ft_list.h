@@ -6,7 +6,7 @@
 /*   By: nalysann <urbilya@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 13:40:50 by nalysann          #+#    #+#             */
-/*   Updated: 2022/05/11 15:39:41 by nalysann         ###   ########.fr       */
+/*   Updated: 2022/05/11 15:50:43 by nalysann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define FT_LIST_H
 
 # include <stddef.h>
-
-# define EMPTY_LIST_POP_MSG "Pop from the empty list"
-# define E_LIST_ERROR 1
 
 struct s_node
 {
